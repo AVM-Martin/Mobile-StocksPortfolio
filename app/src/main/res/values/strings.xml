@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Stocks Portofolio</string>
+
+    <!-- General Message -->
+    <string name="general_error">Unknown Error</string>
+    <string name="load_data">Loading items..</string>
+
+    <!-- Button Name -->
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
+    <string name="submit">Submit</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
