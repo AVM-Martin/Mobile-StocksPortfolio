@@ -10,7 +10,7 @@ import id.my.avmmartin.stocksportofolio.data.model.Broker;
 import id.my.avmmartin.stocksportofolio.utils.Constants;
 
 public class BrokerManager extends SQLiteOpenHelper {
-    static final String TABLE_NAME = "plans";
+    static final String TABLE_NAME = "broker";
     static final int VERSION = 1;
 
     public static final String ID = "id";
