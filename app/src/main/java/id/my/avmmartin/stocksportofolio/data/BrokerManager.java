@@ -26,7 +26,7 @@ public class BrokerManager extends SQLiteOpenHelper {
 
     // read-only method
 
-    Broker getBrokerById(String id) {
+    Broker getById(String id) {
         String selection = (
             ID + " = ?"
         );
@@ -41,7 +41,7 @@ public class BrokerManager extends SQLiteOpenHelper {
         }
     }
 
-    Broker getBrokerByPosition(int position) {
+    Broker getByPosition(int position) {
         try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
@@ -59,7 +59,7 @@ public class BrokerManager extends SQLiteOpenHelper {
                 + ID + " TEXT PRIMARY KEY, "
                 + NAME + " TEXT, "
                 + BUY_FEE + " INTEGER, "
-                + SELL_FEE + " INTEGER, "
+                + SELL_FEE + " INTEGER"
                 + ");"
         );
     }

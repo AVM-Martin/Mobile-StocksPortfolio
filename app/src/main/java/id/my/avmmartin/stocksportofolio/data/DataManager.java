@@ -12,11 +12,11 @@ public class DataManager {
     }
 
     public Broker getBrokerById(String id) {
-        return brokerManager.getBrokerById(id);
+        return brokerManager.getById(id);
     }
 
     public Broker getBrokerByPosition(int position) {
-        return brokerManager.getBrokerByPosition(position);
+        return brokerManager.getByPosition(position);
     }
 
     // constructor
