@@ -1,4 +1,4 @@
-package id.my.avmmartin.stocksportofolio.data;
+package id.my.avmmartin.stocksportfolio.data;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,8 +6,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import id.my.avmmartin.stocksportofolio.data.model.Broker;
-import id.my.avmmartin.stocksportofolio.utils.Constants;
+import id.my.avmmartin.stocksportfolio.data.model.Broker;
+import id.my.avmmartin.stocksportfolio.utils.Constants;
 
 public class BrokerManager extends SQLiteOpenHelper {
     static final String TABLE_NAME = "broker";

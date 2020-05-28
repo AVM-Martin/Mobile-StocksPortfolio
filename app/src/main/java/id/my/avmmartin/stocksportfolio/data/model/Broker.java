@@ -1,9 +1,9 @@
-package id.my.avmmartin.stocksportofolio.data.model;
+package id.my.avmmartin.stocksportfolio.data.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import id.my.avmmartin.stocksportofolio.data.BrokerManager;
+import id.my.avmmartin.stocksportfolio.data.BrokerManager;
 
 public class Broker {
     private static final String ID = BrokerManager.ID;

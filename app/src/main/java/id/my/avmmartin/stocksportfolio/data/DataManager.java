@@ -1,8 +1,8 @@
-package id.my.avmmartin.stocksportofolio.data;
+package id.my.avmmartin.stocksportfolio.data;
 
 import android.content.Context;
 
-import id.my.avmmartin.stocksportofolio.data.model.Broker;
+import id.my.avmmartin.stocksportfolio.data.model.Broker;
 
 public class DataManager {
     // broker

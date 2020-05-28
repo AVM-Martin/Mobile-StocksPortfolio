@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Stocks Portofolio</string>
+    <string name="app_name">Stocks Portfolio</string>
 
     <!-- General Message -->
     <string name="general_error">Unknown Error</string>

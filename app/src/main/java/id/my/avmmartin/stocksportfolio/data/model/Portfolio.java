@@ -1,11 +1,11 @@
-package id.my.avmmartin.stocksportofolio.data.model;
+package id.my.avmmartin.stocksportfolio.data.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
 import java.util.Calendar;
 
-import id.my.avmmartin.stocksportofolio.data.PortfolioManager;
+import id.my.avmmartin.stocksportfolio.data.PortfolioManager;
 
 public class Portfolio {
     private static final String ID = PortfolioManager.ID;

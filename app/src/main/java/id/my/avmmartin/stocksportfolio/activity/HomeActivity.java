@@ -1,14 +1,14 @@
-package id.my.avmmartin.stocksportofolio.activity;
+package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import id.my.avmmartin.stocksportofolio.R;
-import id.my.avmmartin.stocksportofolio.StocksPortofolio;
+import id.my.avmmartin.stocksportfolio.R;
+import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
 public class HomeActivity extends AppCompatActivity {
-    private StocksPortofolio mainApp;
+    private StocksPortfolio mainApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        mainApp = (StocksPortofolio) getApplication();
+        mainApp = (StocksPortfolio) getApplication();
     }
 
     private void loadData() {

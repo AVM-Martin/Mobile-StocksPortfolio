@@ -1,4 +1,4 @@
-package id.my.avmmartin.stocksportofolio.activity;
+package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import id.my.avmmartin.stocksportofolio.R;
+import id.my.avmmartin.stocksportfolio.R;
 
 public class AddPortfolio extends AppCompatActivity {
 

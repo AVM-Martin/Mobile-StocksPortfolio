@@ -1,6 +1,6 @@
-package id.my.avmmartin.stocksportofolio.exception;
+package id.my.avmmartin.stocksportfolio.exception;
 
-import id.my.avmmartin.stocksportofolio.R;
+import id.my.avmmartin.stocksportfolio.R;
 
 public class GeneralException extends Exception {
     private int resId;
