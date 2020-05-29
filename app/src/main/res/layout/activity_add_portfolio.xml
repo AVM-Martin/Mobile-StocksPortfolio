@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="50dp"
     tools:context=".activity.AddPortfolio">
 
     <TextView
         android:id="@+id/tvBrokerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BrokerID"
+        android:text="@string/BrokerID"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"/>
 
     <Spinner
         android:id="@+id/spBrokerID"
@@ -30,7 +33,7 @@
         android:id="@+id/tvPortfolioID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PortfolioID"
+        android:text="@string/portfolioid"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -42,7 +45,7 @@
         android:id="@+id/etPortfolioID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Input Portfolio ID"
+        android:hint="@string/input_portfolio_id"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@id/tvPortfolioID"/>
@@ -51,7 +54,7 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/add"
         android:layout_margin="10dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/etPortfolioID" />
@@ -60,7 +63,7 @@
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:layout_margin="10dp"
         android:layout_below="@id/etPortfolioID"
         android:layout_toLeftOf="@id/btnAdd" />
