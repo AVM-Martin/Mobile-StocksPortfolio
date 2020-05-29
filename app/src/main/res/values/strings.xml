@@ -13,9 +13,19 @@
     <string name="cancel">Cancel</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <!-- String Value -->
     <string name="BrokerID">BrokerID</string>
     <string name="portfolioid">PortfolioID</string>
     <string name="input_portfolio_id">Input Portfolio ID</string>
     <string name="add">Add</string>
-    <string name="cancel">Cancel</string>
+
+
+    <!-- String Array -->
+    <string-array name="header_transaction">
+        <item>Insert Transaction</item>
+        <item>Update Transaction</item>
+        <item>Delete Transaction</item>
+    </string-array>
+
 </resources>
