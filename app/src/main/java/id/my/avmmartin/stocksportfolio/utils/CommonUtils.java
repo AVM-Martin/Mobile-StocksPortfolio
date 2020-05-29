@@ -1,4 +1,4 @@
-package id.my.avmmartin.stocksportofolio.utils;
+package id.my.avmmartin.stocksportfolio.utils;
 
 import android.app.DatePickerDialog;
 import android.widget.TextView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import id.my.avmmartin.stocksportfolio.utils.Constants;
 
 public class CommonUtils {
 

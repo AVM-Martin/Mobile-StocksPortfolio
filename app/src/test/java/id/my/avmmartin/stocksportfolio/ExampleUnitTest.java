@@ -1,4 +1,4 @@
-package id.my.avmmartin.stocksportofolio;
+package id.my.avmmartin.stocksportfolio;
 
 import org.junit.Test;
 

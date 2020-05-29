@@ -1,4 +1,4 @@
-package id.my.avmmartin.stocksportofolio.activity;
+package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +13,8 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-import id.my.avmmartin.stocksportofolio.R;
-import id.my.avmmartin.stocksportofolio.data.model.Portfolio;
-import id.my.avmmartin.stocksportofolio.utils.CommonUtils;
+import id.my.avmmartin.stocksportfolio.R;
+import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class AddPortfolio extends AppCompatActivity {
 
