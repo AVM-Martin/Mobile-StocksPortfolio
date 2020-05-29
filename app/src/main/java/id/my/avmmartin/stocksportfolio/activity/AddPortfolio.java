@@ -14,13 +14,18 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import id.my.avmmartin.stocksportfolio.R;
+import id.my.avmmartin.stocksportfolio.StocksPortfolio;
+import id.my.avmmartin.stocksportfolio.data.DataManager;
+import id.my.avmmartin.stocksportfolio.data.PortfolioManager;
+import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class AddPortfolio extends AppCompatActivity {
+    private StocksPortfolio mainApp;
 
     Spinner spBrokerID;
     EditText etBuyFee, etSellFee;
-    EditText etPortfolioID;
+    EditText etPortfolioName;
     TextView tvCreatedDate;
     ImageButton ivAdd, ivCancel;
 
@@ -42,17 +47,19 @@ public class AddPortfolio extends AppCompatActivity {
     }
 
     private void initComponents() {
+        mainApp = (StocksPortfolio) getApplication();
+
         spBrokerID = findViewById(R.id.spBrokerID);
         etBuyFee = findViewById(R.id.etBuyFee);
         etSellFee = findViewById(R.id.etSellFee);
-        etPortfolioID = findViewById(R.id.etPortfolioID);
+        etPortfolioName = findViewById(R.id.etPortfolioName);
         tvCreatedDate = findViewById(R.id.tvCreatedDate);
         ivAdd = findViewById(R.id.ivAdd);
         ivCancel = findViewById(R.id.ivCancel);
     }
 
     private void loadData() {
-
+        //TODO: load brokerID and buy sell fee
     }
 
     private void setEvents() {
@@ -66,6 +73,9 @@ public class AddPortfolio extends AppCompatActivity {
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String txtBrokerID = spBrokerID.getSelectedItem().toString();
+                String txtPortfolioName = etPortfolioName.getText().toString();
+                Portfolio portfolio = new Portfolio(-1,txtBrokerID,txtPortfolioName,calendar);
                 //TODO: insert portfolio
             }
         });
