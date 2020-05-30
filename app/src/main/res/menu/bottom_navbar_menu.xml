@@ -4,18 +4,22 @@
     <item
         android:id="@+id/navHome"
         android:enabled="true"
-        android:title="Home" />
+        android:title="Home"
+        android:icon="@drawable/icon_home"/>
     <item
         android:id="@+id/navPortfolio"
         android:enabled="true"
-        android:title="Portfolio" />
+        android:title="Portfolio"
+        android:icon="@drawable/icon_portfolio"/>
     <item
         android:id="@+id/navProfile"
         android:enabled="true"
-        android:title="Profile" />
+        android:title="Profile"
+        android:icon="@drawable/icon_profile"/>
     <item
         android:id="@+id/navExit"
         android:enabled="true"
-        android:title="Exit" />
+        android:title="Exit"
+        android:icon="@drawable/icon_exit"/>
 
 </menu>
