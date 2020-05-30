@@ -1,6 +1,7 @@
 package id.my.avmmartin.stocksportfolio.activity.components;
 
 import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -35,12 +36,9 @@ public class PortfolioSpinnerAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View brokerView = convertView;
         if(brokerView == null) {
-            brokerView = activity.getLayoutInflater().inflate(
-                R.layout.single_broker_spinner,
-                parent,
-                false
-            );
-
+            brokerView = LayoutInflater
+                .from(activity)
+                .inflate(R.layout.single_broker_spinner, parent, false);
 
             PortfolioSpinnerViewHolder holder = new PortfolioSpinnerViewHolder(
                 (TextView) brokerView.findViewById(R.id.tvPortfolioName),
