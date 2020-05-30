@@ -54,7 +54,7 @@ public class Portfolio {
 
     // constructor
 
-    public Portfolio(int id, String fkBrokerId, String name, Calendar createdDate) {
+    public Portfolio(String fkBrokerId, String name, Calendar createdDate) {
         setId(id);
         setFkBrokerId(fkBrokerId);
         setName(name);

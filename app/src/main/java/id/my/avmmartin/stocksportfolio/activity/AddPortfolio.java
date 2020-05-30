@@ -75,7 +75,7 @@ public class AddPortfolio extends AppCompatActivity {
             public void onClick(View v) {
                 String txtBrokerID = spBrokerID.getSelectedItem().toString();
                 String txtPortfolioName = etPortfolioName.getText().toString();
-                Portfolio portfolio = new Portfolio(-1,txtBrokerID,txtPortfolioName,calendar);
+                Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
                 //TODO: insert portfolio
             }
         });
