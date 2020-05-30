@@ -1,15 +1,22 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.Calendar;
 
@@ -35,6 +42,36 @@ public class AddPortfolio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_portfolio);
+        ImageButton imgBtnAdd = (ImageButton) findViewById(R.id.imgBtnAdd);
+        imgBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AddPortfolio.this, "Add Transaction Button Pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.navHome){
+                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navPortfolio){
+                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navExit){
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
