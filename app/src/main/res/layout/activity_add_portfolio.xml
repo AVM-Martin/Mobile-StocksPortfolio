@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="50dp"
     tools:context=".activity.AddPortfolio">
 
     <TextView
         android:id="@+id/tvBrokerID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BrokerID"
+        android:text="@string/BrokerID"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"/>
 
     <Spinner
         android:id="@+id/spBrokerID"
@@ -86,7 +89,7 @@
         android:id="@+id/tvPortfolioName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Portfolio Name"
+        android:text="@string/portfolioid"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -98,6 +101,7 @@
         android:id="@+id/etPortfolioName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/input_portfolio_id"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@id/tvPortfolioName"/>
@@ -106,12 +110,10 @@
         android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Created Date"
-        android:textSize="20sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/etPortfolioName"/>
+        android:text="@string/add"
+        android:layout_margin="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/etPortfolioName" />
 
     <TextView
         android:id="@+id/tvCreatedDate"
