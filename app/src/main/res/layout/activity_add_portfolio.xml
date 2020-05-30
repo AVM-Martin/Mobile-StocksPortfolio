@@ -17,15 +17,16 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="20dp"/>
 
-    <Spinner
-        android:id="@+id/spBrokerID"
-        android:layout_width="wrap_content"
+    <AutoCompleteTextView
+        android:id="@+id/atvBrokerID"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:completionThreshold="1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/tvBrokerID">
 
-    </Spinner>
+    </AutoCompleteTextView>
 
     <LinearLayout
         android:id="@+id/layoutFee"

@@ -11,7 +11,6 @@ import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.activity.components.PortfolioSpinnerAdapter;
 import id.my.avmmartin.stocksportfolio.activity.components.TransactionListAdapter;
-import id.my.avmmartin.stocksportfolio.data.DataFactory;
 
 public class ListPortfolioActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -32,7 +31,6 @@ public class ListPortfolioActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        DataFactory.generate(this);
         initComponents();
         loadData();
         setEvents();

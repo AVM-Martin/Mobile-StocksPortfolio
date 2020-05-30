@@ -1,17 +1,14 @@
-package id.my.avmmartin.stocksportfolio.data;
+package id.my.avmmartin.stocksportfolio.data.manager;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
-import id.my.avmmartin.stocksportfolio.utils.Constants;
 
-public class PortfolioManager extends SQLiteOpenHelper {
+public class PortfolioManager {
     static final String TABLE_NAME = "portfolio";
-    static final int VERSION = 1;
+    public static final int VERSION = 1;
 
     public static final String ID = "id";
     public static final String FK_BROKER_ID = "fk_broker_id";
@@ -22,7 +19,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
     public static final int STATUS_ACTIVE = 1;
     public static final int STATUS_CLOSED = 2;
 
-    int size() {
+    public int size() {
         String selection = (
             STATUS + " = ?"
         );
@@ -30,22 +27,16 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
-            // TODO: check this behaviour with onCreate(db);
-            onCreate(db);
-            return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
-        }
+        return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
     }
 
     // create read update
 
-    void insert(Portfolio portfolio) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
-            db.insert(TABLE_NAME, null, portfolio.toContentValues());
-        }
+    public void insert(Portfolio portfolio) {
+        db.insert(TABLE_NAME, null, portfolio.toContentValues());
     }
 
-    Portfolio getById(int id) {
+    public Portfolio getById(int id) {
         String selection = (
             ID + " = ?"
         );
@@ -53,14 +44,12 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(id)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
-            try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
-                return new Portfolio(cursor);
-            }
+        try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
+            return new Portfolio(cursor);
         }
     }
 
-    Portfolio getByPosition(int position) {
+    public Portfolio getByPosition(int position) {
         String selection = (
             STATUS + " = ?"
         );
@@ -68,15 +57,13 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
-            try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
-                cursor.moveToPosition(position);
-                return new Portfolio(cursor);
-            }
+        try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
+            cursor.moveToPosition(position);
+            return new Portfolio(cursor);
         }
     }
 
-    void update(Portfolio portfolio) {
+    public void update(Portfolio portfolio) {
         String whereClause = (
             ID + " = ?"
         );
@@ -84,15 +71,12 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(portfolio.getId())
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
-            db.update(TABLE_NAME, portfolio.toContentValues(), whereClause, whereArgs);
-        }
+        db.update(TABLE_NAME, portfolio.toContentValues(), whereClause, whereArgs);
     }
 
     // overridden method
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
+    public static void onCreate(SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -110,8 +94,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
         );
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             db.execSQL(
                 "DROP TABLE IF EXISTS " + TABLE_NAME + ";"
@@ -122,7 +105,9 @@ public class PortfolioManager extends SQLiteOpenHelper {
 
     // constructor
 
-    PortfolioManager(Context context) {
-        super(context, Constants.DB_NAME, null, VERSION);
+    private SQLiteDatabase db;
+
+    public PortfolioManager(SQLiteDatabase db) {
+        this.db = db;
     }
 }

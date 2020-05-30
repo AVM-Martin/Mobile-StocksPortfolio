@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
 
-                    Intent intent = new Intent(HomeActivity.this,PortfolioActivity.class);
+                    Intent intent = new Intent(HomeActivity.this,AddPortfolio.class);
 
                     startActivity(intent);
                     return true;
