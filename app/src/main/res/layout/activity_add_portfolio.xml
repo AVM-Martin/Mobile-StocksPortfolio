@@ -7,12 +7,6 @@
     tools:context=".activity.AddPortfolio"
     android:layout_marginTop="120dp">
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    <RelativeLayout
-        android:id="@+id/layoutAdd"
-        android:layout_width="50dp"
-=======
     <TextView
         android:id="@+id/tvBrokerID"
         android:layout_width="wrap_content"
@@ -34,16 +28,10 @@
 
     </Spinner>
 
-=======
->>>>>>> c0de94e0bbd6bf052c4bc7fb6107cb0f13b6e949
     <LinearLayout
         android:id="@+id/layoutFee"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> c0de94e0bbd6bf052c4bc7fb6107cb0f13b6e949
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

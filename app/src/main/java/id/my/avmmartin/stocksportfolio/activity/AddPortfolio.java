@@ -3,41 +3,22 @@ package id.my.avmmartin.stocksportfolio.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-import android.content.Intent;
-import android.graphics.Color;
-=======
 import android.app.DatePickerDialog;
 import android.content.Intent;
->>>>>>> Stashed changes
-=======
-import android.app.DatePickerDialog;
->>>>>>> c0de94e0bbd6bf052c4bc7fb6107cb0f13b6e949
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-import android.widget.Toast;
-=======
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
->>>>>>> Stashed changes
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-=======
-import android.widget.TextView;
 
 import java.util.Calendar;
->>>>>>> c0de94e0bbd6bf052c4bc7fb6107cb0f13b6e949
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
@@ -68,7 +49,7 @@ public class AddPortfolio extends AppCompatActivity {
                 Toast.makeText(AddPortfolio.this, "Add Transaction Button Pressed", Toast.LENGTH_SHORT).show();
             }
         });
-        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
