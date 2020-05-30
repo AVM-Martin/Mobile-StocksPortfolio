@@ -6,8 +6,25 @@ import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Stock;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
+import id.my.avmmartin.stocksportfolio.exception.GeneralException;
 
 public class DataManager {
+    public boolean isRegistered() {
+        return preferencesManager.getHashPassword() == null;
+    }
+
+    public boolean checkPassword(String hashPassword) throws GeneralException {
+        try {
+            return preferencesManager.getHashPassword().equals(hashPassword);
+        } catch (NullPointerException e) {
+            throw new GeneralException("Password is null");
+        }
+    }
+
+    public void setPassword(String hashPassword) {
+        preferencesManager.setHashPassword(hashPassword);
+    }
+
     // broker
 
     public int brokerSize() {
@@ -91,6 +108,7 @@ public class DataManager {
     // constructor
 
     private BrokerManager brokerManager;
+    private PreferencesManager preferencesManager;
     private PortfolioManager portfolioManager;
     private StockManager stockManager;
     private TransactionManager transactionManager;
@@ -98,6 +116,7 @@ public class DataManager {
     public DataManager(Context context) {
         brokerManager = new BrokerManager(context);
         portfolioManager = new PortfolioManager(context);
+        preferencesManager = new PreferencesManager(context);
         stockManager = new StockManager(context);
         transactionManager = new TransactionManager(context);
     }
