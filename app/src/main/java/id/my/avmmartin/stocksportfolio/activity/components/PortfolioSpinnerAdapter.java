@@ -35,10 +35,10 @@ public class PortfolioSpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View brokerView = convertView;
-        if(brokerView == null) {
+        if (brokerView == null) {
             brokerView = LayoutInflater
                 .from(activity)
-                .inflate(R.layout.single_broker_spinner, parent, false);
+                .inflate(R.layout.single_portfolio_spinner, parent, false);
 
             PortfolioSpinnerViewHolder holder = new PortfolioSpinnerViewHolder(
                 (TextView) brokerView.findViewById(R.id.tvPortfolioName),
