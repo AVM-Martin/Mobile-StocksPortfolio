@@ -3,15 +3,28 @@ package id.my.avmmartin.stocksportfolio.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< Updated upstream
 import android.content.Intent;
 import android.graphics.Color;
+=======
+import android.app.DatePickerDialog;
+import android.content.Intent;
+>>>>>>> Stashed changes
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+<<<<<<< Updated upstream
 import android.widget.Toast;
+=======
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+>>>>>>> Stashed changes
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -46,7 +59,7 @@ public class AddPortfolio extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,AddPortfolio.class);
+                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
                     startActivity(intent);
                     return true;
                 }
