@@ -1,19 +1,13 @@
-package id.my.avmmartin.stocksportfolio.data;
+package id.my.avmmartin.stocksportfolio.data.factory;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import id.my.avmmartin.stocksportfolio.data.manager.StockManager;
 import id.my.avmmartin.stocksportfolio.data.model.Stock;
 
 public class StockFactory extends StockManager {
-    private void insert(Stock stock) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
-            db.insert(TABLE_NAME, null, stock.toContentValues());
-        }
-    }
-
-    StockFactory(Context context) {
-        super(context);
+    public StockFactory(SQLiteDatabase db) {
+        super(db);
 
         if (size() == 0) {
             // List extracted by MC - per May 29, 2020

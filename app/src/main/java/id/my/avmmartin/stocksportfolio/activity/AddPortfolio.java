@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -28,9 +27,6 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.DataManager;
-import id.my.avmmartin.stocksportfolio.data.PortfolioManager;
-import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 

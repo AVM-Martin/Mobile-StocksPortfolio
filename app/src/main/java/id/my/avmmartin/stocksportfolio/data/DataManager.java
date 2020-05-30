@@ -113,7 +113,5 @@ public class DataManager {
     public DataManager(Context context) {
         databaseManager = new DatabaseManager(context);
         preferencesManager = new PreferencesManager(context);
-
-        databaseManager.checkDatabase();
     }
 }

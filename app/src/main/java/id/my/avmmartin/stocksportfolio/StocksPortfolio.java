@@ -2,7 +2,7 @@ package id.my.avmmartin.stocksportfolio;
 
 import android.app.Application;
 
-import id.my.avmmartin.stocksportfolio.data.DataFactory;
+import id.my.avmmartin.stocksportfolio.data.DatabaseFactory;
 import id.my.avmmartin.stocksportfolio.data.DataManager;
 
 public class StocksPortfolio extends Application {
@@ -11,7 +11,7 @@ public class StocksPortfolio extends Application {
         super.onCreate();
 
         dataManager = new DataManager(this);
-        DataFactory.generate(this);
+        DatabaseFactory.generate(this);
     }
 
     // getter

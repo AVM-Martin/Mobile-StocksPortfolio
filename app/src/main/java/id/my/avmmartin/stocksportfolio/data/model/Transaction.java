@@ -5,7 +5,7 @@ import android.database.Cursor;
 
 import java.util.Calendar;
 
-import id.my.avmmartin.stocksportfolio.data.TransactionManager;
+import id.my.avmmartin.stocksportfolio.data.manager.TransactionManager;
 
 public class Transaction {
     private static final String ID = TransactionManager.ID;
