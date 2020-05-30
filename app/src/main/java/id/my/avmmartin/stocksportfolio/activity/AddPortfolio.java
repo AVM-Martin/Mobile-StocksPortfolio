@@ -1,5 +1,6 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -35,6 +36,36 @@ public class AddPortfolio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_portfolio);
+        ImageButton imgBtnAdd = (ImageButton) findViewById(R.id.imgBtnAdd);
+        imgBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(AddPortfolio.this, "Add Transaction Button Pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.navHome){
+                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navPortfolio){
+                    Intent intent = new Intent(AddPortfolio.this,AddPortfolio.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navExit){
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
