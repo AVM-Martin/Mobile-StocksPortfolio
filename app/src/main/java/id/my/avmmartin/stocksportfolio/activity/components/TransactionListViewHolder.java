@@ -15,7 +15,7 @@ public class TransactionListViewHolder extends RecyclerView.ViewHolder {
 
     private Transaction transaction;
 
-    public void bindData(Transaction transaction) {
+    void bindData(Transaction transaction) {
         this.transaction = transaction;
         loadData();
     }
