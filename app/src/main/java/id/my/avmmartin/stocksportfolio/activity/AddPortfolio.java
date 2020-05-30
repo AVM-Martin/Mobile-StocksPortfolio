@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -37,54 +38,15 @@ import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 public class AddPortfolio extends AppCompatActivity {
     private StocksPortfolio mainApp;
 
-    Spinner spBrokerID;
+    AutoCompleteTextView atvBrokerID;
     EditText etBuyFee, etSellFee;
     EditText etPortfolioName;
     TextView tvCreatedDate;
     ImageButton ivAdd, ivCancel;
 
     Calendar calendar = Calendar.getInstance();
-
-    private List<String> listBrokerID = new ArrayList<>();
-    private BaseAdapter brokerAdapter = new BaseAdapter() {
-        @Override
-        public int getCount() {
-            return listBrokerID.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return listBrokerID.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            BrokerIDHolder holder;
-            View brokerView = convertView;
-            if(brokerView == null) {
-                brokerView = getLayoutInflater().inflate(R.layout.single_broker_spinner, parent, false);
-
-                holder = new BrokerIDHolder();
-                holder.tvBrokerID = brokerView.findViewById(R.id.tvBrokerID);
-                brokerView.setTag(holder);
-            } else {
-                holder = (BrokerIDHolder) brokerView.getTag();
-            }
-
-            String brokerID = listBrokerID.get(position);
-            holder.tvBrokerID.setText(brokerID);
-            return brokerView;
-        }
-
-        class BrokerIDHolder {
-            private TextView tvBrokerID;
-        }
-    };
+    List<String> listBrokerID = new ArrayList<>();
+    ArrayAdapter<String> brokerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +97,7 @@ public class AddPortfolio extends AppCompatActivity {
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
 
-        spBrokerID = findViewById(R.id.spBrokerID);
+        atvBrokerID = findViewById(R.id.atvBrokerID);
         etBuyFee = findViewById(R.id.etBuyFee);
         etSellFee = findViewById(R.id.etSellFee);
         etPortfolioName = findViewById(R.id.etPortfolioName);
@@ -161,12 +123,12 @@ public class AddPortfolio extends AppCompatActivity {
         ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtBrokerID = spBrokerID.getSelectedItem().toString();
+                String txtBrokerID = atvBrokerID.getText().toString();
                 String txtPortfolioName = etPortfolioName.getText().toString();
-
+                Toast.makeText(AddPortfolio.this, txtBrokerID, Toast.LENGTH_LONG).show();
                 Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
 
-                mainApp.getDataManager().insertPortfolio(portfolio);
+//                mainApp.getDataManager().insertPortfolio(portfolio);
 
                 //TODO: go to next activity and buy sell fee
             }
@@ -211,7 +173,7 @@ public class AddPortfolio extends AppCompatActivity {
             listBrokerID.add(mainApp.getDataManager().getBrokerByPosition(i).getId());
         }
 
-        spBrokerID.setAdapter(brokerAdapter);
-
+        brokerAdapter = new ArrayAdapter<>(AddPortfolio.this, android.R.layout.simple_list_item_1, listBrokerID);
+        atvBrokerID.setAdapter(brokerAdapter);
     }
 }
