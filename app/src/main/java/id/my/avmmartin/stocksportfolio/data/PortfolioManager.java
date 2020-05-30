@@ -29,7 +29,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
         }
     }
@@ -50,7 +50,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(id)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Portfolio(cursor);
             }
@@ -65,7 +65,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Portfolio(cursor);

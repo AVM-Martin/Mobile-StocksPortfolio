@@ -16,7 +16,7 @@ public class StockManager extends SQLiteOpenHelper {
     public static final String NAME = "name";
 
     int size() {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         }
     }
@@ -31,7 +31,7 @@ public class StockManager extends SQLiteOpenHelper {
             id
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Stock(cursor);
             }
@@ -39,7 +39,7 @@ public class StockManager extends SQLiteOpenHelper {
     }
 
     Stock getByPosition(int position) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Stock(cursor);

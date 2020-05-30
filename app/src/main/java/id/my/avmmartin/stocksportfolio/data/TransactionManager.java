@@ -26,7 +26,7 @@ public class TransactionManager extends SQLiteOpenHelper {
     public static final int TYPE_SELL = 2;
 
     int size() {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         }
     }
@@ -39,7 +39,7 @@ public class TransactionManager extends SQLiteOpenHelper {
             Integer.toString(portfolioId)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
         }
     }
@@ -60,7 +60,7 @@ public class TransactionManager extends SQLiteOpenHelper {
             Integer.toString(id)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Transaction(cursor);
             }
@@ -68,7 +68,7 @@ public class TransactionManager extends SQLiteOpenHelper {
     }
 
     Transaction getByPosition(int position) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Transaction(cursor);
@@ -84,7 +84,7 @@ public class TransactionManager extends SQLiteOpenHelper {
             Integer.toString(portfolioId)
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Transaction(cursor);

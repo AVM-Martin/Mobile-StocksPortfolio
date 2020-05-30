@@ -18,7 +18,7 @@ public class BrokerManager extends SQLiteOpenHelper {
     public static final String SELL_FEE = "sellfee";
 
     int size() {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         }
     }
@@ -33,7 +33,7 @@ public class BrokerManager extends SQLiteOpenHelper {
             id
         };
 
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Broker(cursor);
             }
@@ -41,7 +41,7 @@ public class BrokerManager extends SQLiteOpenHelper {
     }
 
     Broker getByPosition(int position) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
+        try (SQLiteDatabase db = getReadableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Broker(cursor);
