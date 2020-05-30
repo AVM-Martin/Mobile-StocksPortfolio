@@ -19,6 +19,7 @@ public class BrokerFactory extends BrokerManager {
             insert(new Broker("LG", "Trimegah Sekuritas Indonesia Tbk.", 18, 28));
 
             // TODO: complete this list
+            // List extracted by AVM - per May 27, 2020
             insert(new Broker("AF", "Harita Kencana Sekuritas", 0, 0));
             insert(new Broker("AG", "Kiwoom Sekuritas Indonesia", 0, 0));
             insert(new Broker("AH", "Shinhan Sekuritas Indonesia", 0, 0));
