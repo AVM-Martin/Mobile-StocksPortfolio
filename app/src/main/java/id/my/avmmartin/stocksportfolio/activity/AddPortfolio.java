@@ -43,7 +43,7 @@ public class AddPortfolio extends AppCompatActivity {
     TextView tvCreatedDate;
     ImageButton ivAdd, ivCancel;
 
-    Calendar calendar;
+    Calendar calendar = Calendar.getInstance();
 
     private List<String> listBrokerID = new ArrayList<>();
     private BaseAdapter brokerAdapter = new BaseAdapter() {
@@ -98,29 +98,29 @@ public class AddPortfolio extends AppCompatActivity {
 //                Toast.makeText(AddPortfolio.this, "Add Transaction Button Pressed", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+//        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item.getItemId() == R.id.navHome){
+//                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                else if(item.getItemId() == R.id.navPortfolio){
+//                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
+//                    startActivity(intent);
+//                    return true;
+//                }
+//                else if(item.getItemId() == R.id.navExit){
+//                    finish();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     @Override
@@ -145,8 +145,9 @@ public class AddPortfolio extends AppCompatActivity {
     }
 
     private void loadData() {
-        //TODO: load brokerID and buy sell fee
         showListBrokerID();
+
+        tvCreatedDate.setText(CommonUtils.toDateFormat(calendar));
     }
 
     private void setEvents() {
@@ -161,11 +162,13 @@ public class AddPortfolio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String txtBrokerID = spBrokerID.getSelectedItem().toString();
-
-                Toast.makeText(AddPortfolio.this, txtBrokerID, Toast.LENGTH_LONG).show();
                 String txtPortfolioName = etPortfolioName.getText().toString();
+
                 Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
-                //TODO: insert portfolio
+
+                mainApp.getDataManager().insertPortfolio(portfolio);
+
+                //TODO: go to next activity and buy sell fee
             }
         });
 
@@ -173,18 +176,6 @@ public class AddPortfolio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: cancel portfolio
-
-            }
-        });
-
-        spBrokerID.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -219,7 +210,6 @@ public class AddPortfolio extends AppCompatActivity {
         for(int i=0; i<brokerSize; i++) {
             listBrokerID.add(mainApp.getDataManager().getBrokerByPosition(i).getId());
         }
-//        Toast.makeText(AddPortfolio.this, String.valueOf(listBrokerID.get(1)), Toast.LENGTH_LONG).show();
 
         spBrokerID.setAdapter(brokerAdapter);
 
