@@ -58,7 +58,8 @@ public class PortfolioSpinnerAdapter extends BaseAdapter {
 
     // constructor
 
-    public PortfolioSpinnerAdapter(Activity activity, StocksPortfolio mainApp) {
+    public PortfolioSpinnerAdapter(StocksPortfolio mainApp, Activity activity) {
         this.mainApp = mainApp;
+        this.activity = activity;
     }
 }
