@@ -1,19 +1,13 @@
-package id.my.avmmartin.stocksportfolio.data;
+package id.my.avmmartin.stocksportfolio.data.factory;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import id.my.avmmartin.stocksportfolio.data.manager.BrokerManager;
 import id.my.avmmartin.stocksportfolio.data.model.Broker;
 
 public class BrokerFactory extends BrokerManager {
-    private void insert(Broker broker) {
-        try (SQLiteDatabase db = getWritableDatabase()) {
-            db.insert(TABLE_NAME, null, broker.toContentValues());
-        }
-    }
-
-    BrokerFactory(Context context) {
-        super(context);
+    public BrokerFactory(SQLiteDatabase db) {
+        super(db);
 
         if (size() == 0) {
             insert(new Broker("LG", "Trimegah Sekuritas Indonesia Tbk.", 18, 28));

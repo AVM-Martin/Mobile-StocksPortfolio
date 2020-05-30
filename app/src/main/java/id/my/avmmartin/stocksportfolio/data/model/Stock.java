@@ -3,7 +3,7 @@ package id.my.avmmartin.stocksportfolio.data.model;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import id.my.avmmartin.stocksportfolio.data.StockManager;
+import id.my.avmmartin.stocksportfolio.data.manager.StockManager;
 
 public class Stock {
     private static final String ID = StockManager.ID;

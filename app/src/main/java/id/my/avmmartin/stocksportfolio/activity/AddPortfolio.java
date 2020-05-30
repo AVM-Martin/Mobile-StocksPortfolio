@@ -29,9 +29,6 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.DataManager;
-import id.my.avmmartin.stocksportfolio.data.PortfolioManager;
-import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
