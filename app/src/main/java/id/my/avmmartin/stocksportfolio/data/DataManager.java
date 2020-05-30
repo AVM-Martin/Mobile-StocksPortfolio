@@ -68,23 +68,23 @@ public class DataManager {
         return transactionManager.sizeByPortfolio(portfolioId);
     }
 
-    public void insert(Transaction transaction) {
+    public void insertTransaction(Transaction transaction) {
         transactionManager.insert(transaction);
     }
 
-    public Transaction getById(int id) {
+    public Transaction getTransactionById(int id) {
         return transactionManager.getById(id);
     }
 
-    public Transaction getByPosition(int position) {
+    public Transaction getTransactionByPosition(int position) {
         return transactionManager.getByPosition(position);
     }
 
-    public Transaction getByPortfolioByPosition(int portfolioId, int position) {
+    public Transaction getTransactionByPortfolioByPosition(int portfolioId, int position) {
         return transactionManager.getByPortfolioByPosition(portfolioId, position);
     }
 
-    public void update(Transaction transaction) {
+    public void updateTransaction(Transaction transaction) {
         transactionManager.update(transaction);
     }
 
