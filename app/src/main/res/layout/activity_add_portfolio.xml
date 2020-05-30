@@ -7,6 +7,27 @@
     tools:context=".activity.AddPortfolio"
     android:layout_marginTop="120dp">
 
+    <TextView
+        android:id="@+id/tvBrokerID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BrokerID"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"/>
+
+    <Spinner
+        android:id="@+id/spBrokerID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/tvBrokerID">
+
+    </Spinner>
+
     <LinearLayout
         android:id="@+id/layoutFee"
         android:orientation="horizontal"

@@ -4,13 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.Calendar;
 
@@ -43,7 +49,7 @@ public class AddPortfolio extends AppCompatActivity {
                 Toast.makeText(AddPortfolio.this, "Add Transaction Button Pressed", Toast.LENGTH_SHORT).show();
             }
         });
-        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,7 +61,7 @@ public class AddPortfolio extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,AddPortfolio.class);
+                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
                     startActivity(intent);
                     return true;
                 }
