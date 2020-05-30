@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
+import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 
 public class HomeActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
@@ -34,7 +36,9 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
+
                     Intent intent = new Intent(HomeActivity.this,PortfolioActivity.class);
+
                     startActivity(intent);
                     return true;
                 }
@@ -45,7 +49,6 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     @Override
