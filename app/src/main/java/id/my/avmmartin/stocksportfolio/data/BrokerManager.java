@@ -11,7 +11,6 @@ import id.my.avmmartin.stocksportfolio.utils.Constants;
 
 public class BrokerManager extends SQLiteOpenHelper {
     static final String TABLE_NAME = "broker";
-    static final int VERSION = 1;
 
     public static final String ID = "id";
     public static final String NAME = "name";
@@ -19,7 +18,7 @@ public class BrokerManager extends SQLiteOpenHelper {
     public static final String SELL_FEE = "sellfee";
 
     int size() {
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         }
     }
@@ -34,7 +33,7 @@ public class BrokerManager extends SQLiteOpenHelper {
             id
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Broker(cursor);
             }
@@ -42,7 +41,7 @@ public class BrokerManager extends SQLiteOpenHelper {
     }
 
     Broker getByPosition(int position) {
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Broker(cursor);
@@ -77,6 +76,6 @@ public class BrokerManager extends SQLiteOpenHelper {
     // constructor
 
     BrokerManager(Context context) {
-        super(context, Constants.DB_NAME, null, VERSION);
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
     }
 }

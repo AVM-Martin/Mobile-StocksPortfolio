@@ -11,13 +11,12 @@ import id.my.avmmartin.stocksportfolio.utils.Constants;
 
 public class StockManager extends SQLiteOpenHelper {
     static final String TABLE_NAME = "stock";
-    static final int VERSION = 1;
 
     public static final String ID = "id";
     public static final String NAME = "name";
 
     int size() {
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
         }
     }
@@ -32,7 +31,7 @@ public class StockManager extends SQLiteOpenHelper {
             id
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Stock(cursor);
             }
@@ -40,7 +39,7 @@ public class StockManager extends SQLiteOpenHelper {
     }
 
     Stock getByPosition(int position) {
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Stock(cursor);
@@ -55,7 +54,7 @@ public class StockManager extends SQLiteOpenHelper {
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                 + ID + " TEXT PRIMARY KEY, "
-                + NAME + " TEXT, "
+                + NAME + " TEXT"
                 + ");"
         );
     }
@@ -73,6 +72,6 @@ public class StockManager extends SQLiteOpenHelper {
     // constructor
 
     StockManager(Context context) {
-        super(context, Constants.DB_NAME, null, VERSION);
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
     }
 }

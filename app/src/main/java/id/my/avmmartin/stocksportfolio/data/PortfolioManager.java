@@ -11,7 +11,6 @@ import id.my.avmmartin.stocksportfolio.utils.Constants;
 
 public class PortfolioManager extends SQLiteOpenHelper {
     static final String TABLE_NAME = "portfolio";
-    static final int VERSION = 1;
 
     public static final String ID = "id";
     public static final String FK_BROKER_ID = "fk_broker_id";
@@ -30,9 +29,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
-            // TODO: check this behaviour with onCreate(db);
-            onCreate(db);
+        try (SQLiteDatabase db = getWritableDatabase()) {
             return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
         }
     }
@@ -53,7 +50,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(id)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 return new Portfolio(cursor);
             }
@@ -68,7 +65,7 @@ public class PortfolioManager extends SQLiteOpenHelper {
             Integer.toString(STATUS_ACTIVE)
         };
 
-        try (SQLiteDatabase db = getReadableDatabase()) {
+        try (SQLiteDatabase db = getWritableDatabase()) {
             try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
                 cursor.moveToPosition(position);
                 return new Portfolio(cursor);
@@ -123,6 +120,6 @@ public class PortfolioManager extends SQLiteOpenHelper {
     // constructor
 
     PortfolioManager(Context context) {
-        super(context, Constants.DB_NAME, null, VERSION);
+        super(context, Constants.DB_NAME, null, Constants.DB_VERSION);
     }
 }
