@@ -27,7 +27,7 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
-public class AddTransaction extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class EditTransaction extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private StocksPortfolio mainApp;
     List<String> listStockID = new ArrayList<>();
     ArrayAdapter<String> stockAdapter;
@@ -49,17 +49,17 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(AddTransaction.this,HomeActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,HomeActivity.class);
                     startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddTransaction.this,PortfolioActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,PortfolioActivity.class);
                     startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(AddTransaction.this,TransactionActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,TransactionActivity.class);
                     startActivity(intent);
                     return true;
                 }
@@ -123,7 +123,7 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
             listStockID.add(mainApp.getDataManager().getStockByPosition(i).getId());
         }
 
-        stockAdapter = new ArrayAdapter<>(AddTransaction.this, android.R.layout.simple_list_item_1, listStockID);
+        stockAdapter = new ArrayAdapter<>(EditTransaction.this, android.R.layout.simple_list_item_1, listStockID);
         atvStockID.setAdapter(stockAdapter);
         atvStockID.setOnItemClickListener(this);
     }

@@ -19,15 +19,25 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
 public class TransactionActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
+    ImageButton imgBtnAddTransaction;
+    ImageButton imgBtnEditTransaction;
+    ImageButton imgBtnDeleteTransaction;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
 
-        ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
         imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TransactionActivity.this, AddTransaction.class);
+                startActivity(intent);
+            }
+        });
+
+        imgBtnEditTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransactionActivity.this, EditTransaction.class);
                 startActivity(intent);
             }
         });
@@ -77,6 +87,9 @@ public class TransactionActivity extends AppCompatActivity {
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
+        imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
+        imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
+        imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
     }
 
     private void loadData() {
