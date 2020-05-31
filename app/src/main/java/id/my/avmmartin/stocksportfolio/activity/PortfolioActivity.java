@@ -18,6 +18,8 @@ public class PortfolioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portfolio);
+
+
         com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
@@ -31,6 +33,11 @@ public class PortfolioActivity extends AppCompatActivity {
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(PortfolioActivity.this,PortfolioActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navTransaction){
+                    Intent intent = new Intent(PortfolioActivity.this,TransactionActivity.class);
                     startActivity(intent);
                     return true;
                 }

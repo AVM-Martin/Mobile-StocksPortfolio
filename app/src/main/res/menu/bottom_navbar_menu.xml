@@ -12,6 +12,11 @@
         android:title="Portfolio"
         android:icon="@drawable/icon_portfolio"/>
     <item
+        android:id="@+id/navTransaction"
+        android:enabled="true"
+        android:title="Transaction"
+        android:icon="@drawable/icon_transaction"/>
+    <item
         android:id="@+id/navProfile"
         android:enabled="true"
         android:title="Profile"
