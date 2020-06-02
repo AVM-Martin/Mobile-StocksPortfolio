@@ -7,6 +7,7 @@ import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Stock;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.exception.GeneralException;
+import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
 public class DataManager {
     public boolean isRegistered() {
@@ -105,13 +106,29 @@ public class DataManager {
         databaseManager.getTransactionManager().update(transaction);
     }
 
+    // stock price
+
+    public void reloadOnlineStockPrice(OnlineDataLoaderUtils loaderUtils, String stockId) {
+        volleyManager.getStockPriceManager().reloadOnlineData(loaderUtils, stockId);
+    }
+
+    public int getStockPrice(String stockId) {
+        if (volleyManager.getStockPriceManager().getPrice(stockId) == null) {
+            return 0;
+        } else {
+            return volleyManager.getStockPriceManager().getPrice(stockId);
+        }
+    }
+
     // constructor
 
     private DatabaseManager databaseManager;
     private PreferencesManager preferencesManager;
+    private VolleyManager volleyManager;
 
     public DataManager(Context context) {
         databaseManager = new DatabaseManager(context);
         preferencesManager = new PreferencesManager(context);
+        volleyManager = VolleyManager.getInstance(context);
     }
 }
