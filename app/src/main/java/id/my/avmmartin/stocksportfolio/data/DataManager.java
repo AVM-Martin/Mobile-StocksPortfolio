@@ -10,6 +10,10 @@ import id.my.avmmartin.stocksportfolio.exception.GeneralException;
 import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
 public class DataManager {
+    private DatabaseManager databaseManager;
+    private PreferencesManager preferencesManager;
+    private VolleyManager volleyManager;
+
     public boolean isRegistered() {
         return preferencesManager.getHashPassword() == null;
     }
@@ -120,13 +124,19 @@ public class DataManager {
         }
     }
 
-    // constructor
+    // singleton constructor
 
-    private DatabaseManager databaseManager;
-    private PreferencesManager preferencesManager;
-    private VolleyManager volleyManager;
+    private static DataManager instance = null;
 
-    public DataManager(Context context) {
+    public static DataManager getInstance(Context context) {
+        if (instance == null) {
+            instance = new DataManager(context.getApplicationContext());
+        }
+
+        return instance;
+    }
+
+    private DataManager(Context context) {
         databaseManager = new DatabaseManager(context);
         preferencesManager = new PreferencesManager(context);
         volleyManager = VolleyManager.getInstance(context);

@@ -10,7 +10,7 @@ public class StocksPortfolio extends Application {
     public void onCreate() {
         super.onCreate();
 
-        dataManager = new DataManager(this);
+        dataManager = DataManager.getInstance(this);
         DatabaseFactory.generate(this);
     }
 
