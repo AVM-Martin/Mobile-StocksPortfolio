@@ -48,7 +48,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     DatabaseManager(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
 
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
 
         brokerManager = new BrokerManager(db);
         portfolioManager = new PortfolioManager(db);
