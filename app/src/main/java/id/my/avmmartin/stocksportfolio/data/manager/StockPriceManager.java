@@ -1,7 +1,5 @@
 package id.my.avmmartin.stocksportfolio.data.manager;
 
-import android.util.Log;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -19,7 +17,7 @@ import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 public class StockPriceManager extends HashMap<String, Integer> {
     private static final String URL = Constants.JSON_URL_STOCK_PRICE;
 
-    public void reloadOnlineData(final OnlineDataLoaderUtils loaderUtils, String stockId) {
+    public void reloadOnlineData(final OnlineDataLoaderUtils loaderUtils, final String stockId) {
         loaderUtils.onPreExecute();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
@@ -40,11 +38,9 @@ public class StockPriceManager extends HashMap<String, Integer> {
 
                         for (int i = 0; i < prices.length(); i++) {
                             try {
-                                int price = prices.getInt(i);
-                                // put(stockId, price);
-                                Log.d("hoho", Integer.toString(price));
+                                put(stockId, prices.getInt(i));
                             } catch (Exception e) {
-                                Log.e("hoho", "from stock price manager", e);
+                                //
                             }
                         }
 
