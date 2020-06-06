@@ -19,13 +19,13 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
 public class TransactionActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
-    ImageButton imgBtnAddTransaction;
-    ImageButton imgBtnEditTransaction;
-    ImageButton imgBtnDeleteTransaction;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
-
+        ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
+        ImageButton imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
+        //ImageButton imgBtnDeleteTransaction;
         imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +33,6 @@ public class TransactionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         imgBtnEditTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,9 +40,6 @@ public class TransactionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
 
         // Bottom Navigation View
         com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -87,9 +83,8 @@ public class TransactionActivity extends AppCompatActivity {
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
-        imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
-        imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
-        imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
+
+        //imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
     }
 
     private void loadData() {

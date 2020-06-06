@@ -36,16 +36,12 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-
-                    Intent intent = new Intent(HomeActivity.this,AddPortfolio.class);
-
+                    Intent intent = new Intent(HomeActivity.this,PortfolioActivity.class);
                     startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
-
                     Intent intent = new Intent(HomeActivity.this,TransactionActivity.class);
-
                     startActivity(intent);
                     return true;
                 }
