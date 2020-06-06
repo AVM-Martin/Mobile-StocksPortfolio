@@ -1,24 +1,19 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.BaseAdapter;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -32,41 +27,39 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
-public class AddPortfolio extends AppCompatActivity {
+public class EditTransaction extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private StocksPortfolio mainApp;
+    List<String> listStockID = new ArrayList<>();
+    ArrayAdapter<String> stockAdapter;
+    TextView tvCompanyNameValue;
 
-    AutoCompleteTextView atvBrokerID;
-    EditText etBuyFee, etSellFee;
-    EditText etPortfolioName;
-    TextView tvCreatedDate;
-    ImageButton ivAdd, ivCancel;
-
-    Calendar calendar = Calendar.getInstance();
-    List<String> listBrokerID = new ArrayList<>();
-    ArrayAdapter<String> brokerAdapter;
-
+    AutoCompleteTextView atvStockID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_portfolio);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        setContentView(R.layout.activity_add_transaction);
+
+
+
+
+        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,HomeActivity.class);
                     startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,PortfolioActivity.class);
                     startActivity(intent);
                     return true;
                 }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,TransactionActivity.class);
+                else if(item.getItemId() == R.id.navTransaction){
+                    Intent intent = new Intent(EditTransaction.this,TransactionActivity.class);
                     startActivity(intent);
                     return true;
                 }
@@ -90,51 +83,15 @@ public class AddPortfolio extends AppCompatActivity {
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
-
-        atvBrokerID = findViewById(R.id.atvBrokerID);
-        etBuyFee = findViewById(R.id.etBuyFee);
-        etSellFee = findViewById(R.id.etSellFee);
-        etPortfolioName = findViewById(R.id.etPortfolioName);
-        tvCreatedDate = findViewById(R.id.tvCreatedDate);
-        ivAdd = findViewById(R.id.ivAdd);
-        ivCancel = findViewById(R.id.ivCancel);
+        atvStockID = findViewById(R.id.atvStockID);
+        tvCompanyNameValue = findViewById(R.id.tvCompanyNameValue);
     }
 
     private void loadData() {
-        showListBrokerID();
-
-        tvCreatedDate.setText(CommonUtils.toDateFormat(calendar));
+        showListStockID();
     }
 
     private void setEvents() {
-        tvCreatedDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(calendar, tvCreatedDate);
-            }
-        });
-
-        ivAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String txtBrokerID = atvBrokerID.getText().toString();
-                String txtPortfolioName = etPortfolioName.getText().toString();
-                Toast.makeText(AddPortfolio.this, txtBrokerID, Toast.LENGTH_LONG).show();
-                Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
-
-//                mainApp.getDataManager().insertPortfolio(portfolio);
-
-                //TODO: go to next activity and buy sell fee
-            }
-        });
-
-        ivCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: cancel portfolio
-
-            }
-        });
 
     }
 
@@ -159,15 +116,23 @@ public class AddPortfolio extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void showListBrokerID() {
-        listBrokerID.clear();
-        int brokerSize = mainApp.getDataManager().brokerSize();
-
-        for(int i=0; i<brokerSize; i++) {
-            listBrokerID.add(mainApp.getDataManager().getBrokerByPosition(i).getId());
+    private void showListStockID() {
+        listStockID.clear();
+        int stockSize = mainApp.getDataManager().stockSize();
+        for(int i=0; i<stockSize; i++) {
+            listStockID.add(mainApp.getDataManager().getStockByPosition(i).getId());
         }
 
-        brokerAdapter = new ArrayAdapter<>(AddPortfolio.this, android.R.layout.simple_list_item_1, listBrokerID);
-        atvBrokerID.setAdapter(brokerAdapter);
+        stockAdapter = new ArrayAdapter<>(EditTransaction.this, android.R.layout.simple_list_item_1, listStockID);
+        atvStockID.setAdapter(stockAdapter);
+        atvStockID.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        int idx = listStockID.indexOf(item);
+        String companyName = mainApp.getDataManager().getStockByPosition(idx).getName();
+        tvCompanyNameValue.setText(companyName);
     }
 }

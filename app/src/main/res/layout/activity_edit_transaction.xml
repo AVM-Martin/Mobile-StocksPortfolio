@@ -7,10 +7,10 @@
     tools:context=".activity.AddTransaction">
 
     <TextView
-        android:id="@+id/tvAddTransaction"
+        android:id="@+id/tvEditTransaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Transaction"
+        android:text="Edit Transaction"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
@@ -21,7 +21,7 @@
         android:id="@+id/tvTickerCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvAddTransaction"
+        android:layout_below="@id/tvEditTransaction"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:height="45dp"
@@ -34,7 +34,7 @@
         android:id="@+id/atvStockID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvAddTransaction"
+        android:layout_below="@+id/tvEditTransaction"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/tvTickerCode"
         android:layout_marginLeft="10dp"
