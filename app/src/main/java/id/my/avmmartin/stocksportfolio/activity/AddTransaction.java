@@ -60,16 +60,25 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
                 if(item.getItemId() == R.id.navHome){
                     Intent intent = new Intent(AddTransaction.this,HomeActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(AddTransaction.this,PortfolioActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
                     Intent intent = new Intent(AddTransaction.this,TransactionActivity.class);
                     startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(AddTransaction.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){

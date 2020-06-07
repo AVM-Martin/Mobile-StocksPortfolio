@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
+import org.w3c.dom.ProcessingInstruction;
+
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
@@ -31,18 +33,24 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(HomeActivity.this,HomeActivity.class);
-                    startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(HomeActivity.this,PortfolioActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
                     Intent intent = new Intent(HomeActivity.this,TransactionActivity.class);
                     startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){

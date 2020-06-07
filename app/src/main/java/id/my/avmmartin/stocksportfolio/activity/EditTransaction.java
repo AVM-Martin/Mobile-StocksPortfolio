@@ -51,16 +51,25 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                 if(item.getItemId() == R.id.navHome){
                     Intent intent = new Intent(EditTransaction.this,HomeActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(EditTransaction.this,PortfolioActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
                     Intent intent = new Intent(EditTransaction.this,TransactionActivity.class);
                     startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(EditTransaction.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){

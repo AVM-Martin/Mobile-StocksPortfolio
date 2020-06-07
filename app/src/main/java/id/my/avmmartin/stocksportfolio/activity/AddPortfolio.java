@@ -58,16 +58,25 @@ public class AddPortfolio extends AppCompatActivity {
                 if(item.getItemId() == R.id.navHome){
                     Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(AddPortfolio.this,PortfolioActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(AddPortfolio.this,TransactionActivity.class);
                     startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(AddPortfolio.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){

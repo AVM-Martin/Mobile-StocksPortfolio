@@ -1,15 +1,15 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -17,56 +17,44 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
-public class TransactionActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
 
+    EditText etPassword, etConfirmPassword;
+    Button btnUpdate;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transaction);
-        ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
-        ImageButton imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
-        //ImageButton imgBtnDeleteTransaction;
-        imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransactionActivity.this, AddTransaction.class);
-                startActivity(intent);
-            }
-        });
-        imgBtnEditTransaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TransactionActivity.this, EditTransaction.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.activity_profile);
 
-        // Bottom Navigation View
         com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        // Bottom Nav View
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         bottomNavigationView.setSelectedItemId(R.id.navTransaction);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(TransactionActivity.this,HomeActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this,HomeActivity.class);
                     startActivity(intent);
                     finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(TransactionActivity.this,PortfolioActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this,PortfolioActivity.class);
                     startActivity(intent);
                     finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
+                    Intent intent = new Intent(ProfileActivity.this,TransactionActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(TransactionActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
@@ -76,6 +64,7 @@ public class TransactionActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override
@@ -85,19 +74,42 @@ public class TransactionActivity extends AppCompatActivity {
         initComponents();
         loadData();
         setEvents();
+
     }
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
 
-        //imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        btnUpdate = findViewById(R.id.btnUpdate);
     }
 
     private void loadData() {
-        // none
+
     }
 
     private void setEvents() {
-        // none
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String txtPassword = etPassword.getText().toString();
+                String txtConfirmPassword = etConfirmPassword.getText().toString();
+
+                if(txtPassword.isEmpty()) {
+                    Toast.makeText(ProfileActivity.this, "Password must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!txtConfirmPassword.equals(txtPassword)) {
+                    Toast.makeText(ProfileActivity.this, "Password is not the same", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mainApp.getDataManager().setPassword(txtPassword);
+
+                Toast.makeText(ProfileActivity.this, "Successfully updated", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
