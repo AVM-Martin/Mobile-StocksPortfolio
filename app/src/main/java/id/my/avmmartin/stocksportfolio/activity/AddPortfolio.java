@@ -119,19 +119,44 @@ public class AddPortfolio extends AppCompatActivity {
             public void onClick(View v) {
                 String txtBrokerID = atvBrokerID.getText().toString();
                 String txtPortfolioName = etPortfolioName.getText().toString();
-                Toast.makeText(AddPortfolio.this, txtBrokerID, Toast.LENGTH_LONG).show();
+                String txtBuyFee = etBuyFee.getText().toString();
+                String txtSellFee = etSellFee.getText().toString();
+
+                if(txtBrokerID.isEmpty()) {
+                    Toast.makeText(AddPortfolio.this, "BrokerID must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(txtBuyFee.isEmpty()) {
+                    Toast.makeText(AddPortfolio.this, "Buy Fee must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(txtSellFee.isEmpty()) {
+                    Toast.makeText(AddPortfolio.this, "Sell Fee must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(txtPortfolioName.isEmpty()) {
+                    Toast.makeText(AddPortfolio.this, "Portfolio Name must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
 
 //                mainApp.getDataManager().insertPortfolio(portfolio);
 
                 //TODO: go to next activity and buy sell fee
+
+                Toast.makeText(AddPortfolio.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
         ivCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: cancel portfolio
+                finish();
 
             }
         });

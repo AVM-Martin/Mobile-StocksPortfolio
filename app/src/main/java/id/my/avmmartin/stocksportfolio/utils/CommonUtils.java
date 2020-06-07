@@ -15,4 +15,12 @@ public class CommonUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(Constants.DATE_FORMAT, Locale.US);
         return sdf.format(calendar.getTime());
     }
+
+    public static int toIntFee(String fee) {
+        return Integer.valueOf(fee) * 100;
+    }
+
+    public static String toStringFee(int fee) {
+        return String.valueOf(fee / 100);
+    }
 }
