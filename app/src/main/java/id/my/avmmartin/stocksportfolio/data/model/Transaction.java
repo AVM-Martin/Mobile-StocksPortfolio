@@ -18,8 +18,8 @@ public class Transaction {
     private static final String FEE = TransactionManager.FEE;
     private static final String TOTAL = TransactionManager.TOTAL;
 
-    private static final int TYPE_BUY = TransactionManager.TYPE_BUY;
-    private static final int TYPE_SELL = TransactionManager.TYPE_SELL;
+    public static final int TYPE_BUY = TransactionManager.TYPE_BUY;
+    public static final int TYPE_SELL = TransactionManager.TYPE_SELL;
 
     private int id;
     private int fkPortfolioId;
