@@ -63,16 +63,22 @@ public class TransactionActivity extends AppCompatActivity {
                 if(item.getItemId() == R.id.navHome){
                     Intent intent = new Intent(TransactionActivity.this,HomeActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
                     Intent intent = new Intent(TransactionActivity.this,PortfolioActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(TransactionActivity.this,TransactionActivity.class);
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(TransactionActivity.this, ProfileActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){

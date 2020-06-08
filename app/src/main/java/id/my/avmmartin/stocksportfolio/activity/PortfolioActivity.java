@@ -50,16 +50,22 @@ public class PortfolioActivity extends AppCompatActivity {
                 if(item.getItemId() == R.id.navHome){
                     Intent intent = new Intent(PortfolioActivity.this,HomeActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(PortfolioActivity.this,PortfolioActivity.class);
-                    startActivity(intent);
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){
                     Intent intent = new Intent(PortfolioActivity.this,TransactionActivity.class);
                     startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(PortfolioActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
