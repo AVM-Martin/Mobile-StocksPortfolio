@@ -153,6 +153,8 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
                     }
                     int type = transactionType;
                     Transaction trx = new Transaction(fkPortfolioId, fkStockId, type, transactionDate, price, lot, fee);
+                    mainApp.getDataManager().insertTransaction(trx);
+                    Toast.makeText(AddTransaction.this, "Successfully Added New Transaction", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 

@@ -29,6 +29,8 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
+import id.my.avmmartin.stocksportfolio.data.DatabaseManager;
+import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
@@ -67,7 +69,7 @@ public class AddPortfolio extends AppCompatActivity {
                     finish();
                     return true;
                 }
-                else if(item.getItemId() == R.id.navPortfolio){
+                else if(item.getItemId() == R.id.navTransaction){
                     Intent intent = new Intent(AddPortfolio.this,TransactionActivity.class);
                     startActivity(intent);
                     finish();
@@ -153,11 +155,12 @@ public class AddPortfolio extends AppCompatActivity {
 
                 Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
 
-//                mainApp.getDataManager().insertPortfolio(portfolio);
+
+                //mainApp.getDataManager().insertPortfolio(portfolio);
 
                 //TODO: go to next activity and buy sell fee
 
-                Toast.makeText(AddPortfolio.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPortfolio.this, "Successfully Add Portfolio", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

@@ -26,20 +26,20 @@ public class DatabaseFactory extends DatabaseManager {
     // private generator
 
     private void generatePortfolio() {
-        if (getPortfolioManager().size() == 0) {
-            getPortfolioManager().insert(new Portfolio("LG", "Trima AVM", Calendar.getInstance()));
-            getPortfolioManager().insert(new Portfolio("LG", "Trima AVM 2", Calendar.getInstance()));
-        }
+//        if (getPortfolioManager().size() == 0) {
+//            getPortfolioManager().insert(new Portfolio("LG", "Trima AVM", Calendar.getInstance()));
+//            getPortfolioManager().insert(new Portfolio("LG", "Trima AVM 2", Calendar.getInstance()));
+//        }
     }
 
     private void generateTransaction() {
-        if (getTransactionManager().size() == 0) {
-            for (int i = 0; i < 100; i++) {
-                getTransactionManager().insert(
-                    new Transaction(1, "BTPS", 1, Calendar.getInstance(), i, i, i)
-                );
-            }
-        }
+//        if (getTransactionManager().size() == 0) {
+//            for (int i = 0; i < 1; i++) {
+//                getTransactionManager().insert(
+//                    new Transaction(1, "BTPS", 1, Calendar.getInstance(), i, i, i)
+//                );
+//            }
+//        }
     }
 
     // constructor

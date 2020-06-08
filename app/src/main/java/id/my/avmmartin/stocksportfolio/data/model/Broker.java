@@ -65,19 +65,19 @@ public class Broker {
 
     // setter
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setBuyFee(int buyFee) {
+    public void setBuyFee(int buyFee) {
         this.buyFee = buyFee;
     }
 
-    private void setSellFee(int sellFee) {
+    public void setSellFee(int sellFee) {
         this.sellFee = sellFee;
     }
 }
