@@ -5,213 +5,271 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.EditTransaction">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            >
 
-    <TextView
-        android:id="@+id/tvEditTransaction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Transaction"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        />
+            <TextView
+                android:id="@+id/tvAddTransaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Transaction"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                />
 
-    <TextView
-        android:id="@+id/tvTickerCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvEditTransaction"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Ticker Code : "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvTickerCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAddTransaction"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Ticker Code : "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <AutoCompleteTextView
-        android:id="@+id/atvStockID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvEditTransaction"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/tvTickerCode"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:width="100dp"
-        android:completionThreshold="1"
-        android:inputType="textCapCharacters"
-        />
+            <AutoCompleteTextView
+                android:id="@+id/atvStockID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvAddTransaction"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/tvTickerCode"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:width="100dp"
+                android:completionThreshold="1"
+                android:inputType="textCapCharacters"
+                />
 
-    <TextView
-        android:id="@+id/tvCompanyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvTickerCode"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Company :  "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvCompanyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTickerCode"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Company :  "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <TextView
-        android:id="@+id/tvCompanyNameValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvTickerCode"
-        android:layout_toRightOf="@id/tvCompanyName"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:height="45dp"
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvCompanyNameValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTickerCode"
+                android:layout_toRightOf="@id/tvCompanyName"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:height="45dp"
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <TextView
-        android:id="@+id/tvTransactionDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvCompanyName"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Transaction Date :  "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvTransaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCompanyName"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Transaction : "
+                android:textSize="16dp"
+                android:gravity="center_vertical"/>
 
-    <TextView
-        android:id="@+id/tvTransactionDateValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="dd/mm/yyyy"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_below="@id/tvCompanyName"
-        android:layout_toRightOf="@id/tvTransactionDate"
-        android:gravity="center_vertical"
-        android:height="45dp"/>
+            <TextView
+                android:id="@+id/tvTransactionDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTransaction"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Transaction Date :  "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvTransactionDate"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Price :  "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <RadioGroup
+                android:id="@+id/rgTransaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCompanyName"
+                android:layout_toRightOf="@id/tvTransaction"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:minHeight="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:id="@+id/rbBuyTransaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="45dp"
+                    android:text="Buy"
+                    android:textSize="16dp"
+                    android:checked="true"
 
-    <EditText
-        android:id="@+id/etPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTransactionDate"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/tvPrice"
-        android:layout_marginLeft="5dp"
-        android:height="45dp"
-        android:width="100dp"
-        android:inputType="number"
-        />
+                    />
+                <RadioButton
+                    android:id="@+id/rbSellTransaction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="45dp"
+                    android:text="Sell"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="16dp"
+                    />
+            </RadioGroup>
 
-    <TextView
-        android:id="@+id/tvShares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvPrice"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Shares :  "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvTransactionDateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dd/mm/yyyy"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/tvTransaction"
+                android:layout_toRightOf="@id/tvTransactionDate"
+                android:gravity="center_vertical"
+                android:height="45dp"/>
 
-    <EditText
-        android:id="@+id/etShares"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPrice"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/tvShares"
-        android:layout_marginLeft="5dp"
-        android:height="45dp"
-        android:width="100dp"
-        android:inputType="number"
-        />
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTransactionDate"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Price :  "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <TextView
-        android:id="@+id/tvShareNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="(1 lot = 100 shares)"
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@id/tvPrice"
-        android:layout_toRightOf="@id/etShares"
-        android:gravity="center_vertical"
-        android:height="45dp"
-        android:textStyle="italic"/>
+            <EditText
+                android:id="@+id/etPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTransactionDate"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvPrice"
+                android:layout_marginLeft="5dp"
+                android:height="45dp"
+                android:width="100dp"
+                android:inputType="number"
+                />
 
-    <TextView
-        android:id="@+id/tvPortfolioName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvShares"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:height="45dp"
-        android:text="Portfolio Name :  "
-        android:textSize="16dp"
-        android:gravity="center_vertical"
-        />
+            <TextView
+                android:id="@+id/tvShares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPrice"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Shares :  "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
-    <Spinner
-        android:id="@+id/spPortfolioName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvShares"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/tvPortfolioName"
-        android:layout_marginLeft="5dp"
-        android:height="45dp"
-        android:width="150dp"
-        />
+            <EditText
+                android:id="@+id/etShares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPrice"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvShares"
+                android:layout_marginLeft="5dp"
+                android:height="45dp"
+                android:width="100dp"
+                android:inputType="number"
+                />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:background="@color/colorPrimary"
-        android:layout_below="@id/tvPortfolioName"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        />
+            <TextView
+                android:id="@+id/tvShareNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(1 lot = 100 shares)"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/tvPrice"
+                android:layout_toRightOf="@id/etShares"
+                android:gravity="center_vertical"
+                android:height="45dp"
+                android:textStyle="italic"/>
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:background="@color/colorAccent"
-        android:layout_below="@id/tvPortfolioName"
-        android:layout_toRightOf="@id/btnSubmit"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
-        />
+            <TextView
+                android:id="@+id/tvPortfolioName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvShares"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:height="45dp"
+                android:text="Portfolio Name :  "
+                android:textSize="16dp"
+                android:gravity="center_vertical"
+                />
 
+            <EditText
+                android:id="@+id/etPortfolioName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvShares"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/tvPortfolioName"
+                android:layout_marginLeft="5dp"
+                android:height="45dp"
+                android:width="150dp"
+                />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:background="@color/colorPrimary"
+                android:layout_below="@id/tvPortfolioName"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:background="@color/colorAccent"
+                android:layout_below="@id/tvPortfolioName"
+                android:layout_toRightOf="@id/btnSubmit"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/btnSubmit"/>
+        </RelativeLayout>
+    </ScrollView>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_alignParentBottom = "true"
         android:id="@+id/bottom_navigation"
@@ -223,5 +281,6 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/bottom_navbar_menu"
         />
-
 </RelativeLayout>
+
+

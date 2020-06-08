@@ -23,21 +23,33 @@ public class TransactionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+        mainApp = (StocksPortfolio) getApplication();
         ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
         ImageButton imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
         //ImageButton imgBtnDeleteTransaction;
         imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransactionActivity.this, AddTransaction.class);
-                startActivity(intent);
+                if(mainApp.getDataManager().portfolioSize() == 0){
+                    Toast.makeText(TransactionActivity.this, "Please Register Portfolio First", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(TransactionActivity.this, AddTransaction.class);
+                    startActivity(intent);
+                }
+
             }
         });
         imgBtnEditTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TransactionActivity.this, EditTransaction.class);
-                startActivity(intent);
+                if(mainApp.getDataManager().portfolioSize() == 0){
+                    Toast.makeText(TransactionActivity.this, "Please Register Portfolio First", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(TransactionActivity.this, EditTransaction.class);
+                    startActivity(intent);
+                }
             }
         });
 

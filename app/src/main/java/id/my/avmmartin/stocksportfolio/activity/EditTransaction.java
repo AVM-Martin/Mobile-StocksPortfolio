@@ -11,6 +11,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ import java.util.List;
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
+import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class EditTransaction extends AppCompatActivity implements AdapterView.OnItemClickListener{
@@ -37,7 +40,8 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
     ArrayAdapter<String> stockAdapter;
     ArrayAdapter<String> portfolioAdapter;
     TextView tvCompanyNameValue;
-    Spinner spPortfolioName = findViewById(R.id.spPortfolioName);
+    String item = "";
+    //Spinner spPortfolioName = findViewById(R.id.spPortfolioName);
 
     AutoCompleteTextView atvStockID;
     @Override
@@ -57,7 +61,49 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Declare Property
+                EditText etPrice = findViewById(R.id.etPrice);
+                EditText etShares = findViewById(R.id.etShares);
+                RadioGroup rgTransaction = findViewById(R.id.rgTransaction);
+                int selectedRB = rgTransaction.getCheckedRadioButtonId();
+                RadioButton rbTransaction = findViewById(selectedRB);
+
+
                 // Validation Form Process
+                if(item.contentEquals("")){
+                    atvStockID.setError("Please Fill the Stock Name");
+                    atvStockID.requestFocus();
+                }
+                else if(etPrice.getText().toString().length() == 0){
+                    etPrice.setError("Please Fill the Stock Price");
+                    etPrice.requestFocus();
+                }
+                else if(etPrice.getText().toString().length() > 0 && Integer.valueOf(etPrice.getText().toString()) == 0){
+                    etPrice.setError("Please Fill the Valid Stock Price");
+                    etPrice.requestFocus();
+                }
+                else if(etShares.getText().toString().length() == 0){
+                    etShares.setError("Please Fill the Stock Shares");
+                    etShares.requestFocus();
+                }
+                else if(etShares.getText().toString().length() > 0 && Integer.valueOf(etShares.getText().toString()) == 0){
+                    etShares.setError("Please Fill the Valid Stock Shares");
+                    etShares.requestFocus();
+                }
+                else{
+                    int transactionType = Transaction.TYPE_BUY;
+                    if(rbTransaction.getText().equals("Sell")){
+                        transactionType = Transaction.TYPE_SELL;
+                    }
+                    //int fkPortfolioId = ;
+                    String fkStockId = item;
+                    int type = transactionType;
+                    //Calendar transactionDate = ;
+                    //int price = Integer.valueOf(etPrice.getText().toString());
+                    //int lot = Integer.valueOf(etShares.getText().toString());;
+                    //int fee = ;
+                    //Transaction trx = new Transaction(fkPortfolioId, fkStockId, type, transactionDate, price, lot, fee);
+                }
 
             }
         });
@@ -162,14 +208,14 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
 //        for(int i=0; i<portfolioSize; i++) {
 //            listPortfolioName.add(mainApp.getDataManager().getPortfolioByPosition(i).getName());
 //        }
-//        portfolioAdapter = new ArrayAdapter<>(EditTransaction.this, android.R.layout.simple_list_item_1, listPortfolioName);
+//        portfolioAdapter = new ArrayAdapter<>(AddTransaction.this, android.R.layout.simple_list_item_1, listPortfolioName);
 //        spPortfolioName.setAdapter(portfolioAdapter);
 //        spPortfolioName.setOnItemClickListener(this);
 //    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String item = parent.getItemAtPosition(position).toString();
+        item = parent.getItemAtPosition(position).toString();
         int idx = listStockID.indexOf(item);
         String companyName = mainApp.getDataManager().getStockByPosition(idx).getName();
         tvCompanyNameValue.setText(companyName);

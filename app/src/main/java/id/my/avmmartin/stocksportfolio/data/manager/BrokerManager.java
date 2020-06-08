@@ -34,6 +34,7 @@ public class BrokerManager {
         };
 
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
+            cursor.moveToFirst();
             return new Broker(cursor);
         }
     }

@@ -45,6 +45,7 @@ public class PortfolioManager {
         };
 
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
+            cursor.moveToFirst();
             return new Portfolio(cursor);
         }
     }
