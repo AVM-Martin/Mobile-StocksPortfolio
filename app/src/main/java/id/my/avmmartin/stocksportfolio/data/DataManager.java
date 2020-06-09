@@ -14,9 +14,6 @@ public class DataManager {
     private PreferencesManager preferencesManager;
     private VolleyManager volleyManager;
 
-    public String printPassword() {
-        return preferencesManager.getHashPassword();
-    }
 
     public boolean isRegistered() {
         return preferencesManager.getHashPassword() != null;

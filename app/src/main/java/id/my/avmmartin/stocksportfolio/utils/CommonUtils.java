@@ -17,10 +17,10 @@ public class CommonUtils {
     }
 
     public static int toIntFee(String fee) {
-        return Integer.valueOf(fee) * 100;
+        return (int)(Float.valueOf(fee) * 100);
     }
 
     public static String toStringFee(int fee) {
-        return String.valueOf(fee / 100);
+        return String.valueOf(fee / 100.0);
     }
 }

@@ -153,14 +153,21 @@ public class AddPortfolio extends AppCompatActivity {
                     return;
                 }
 
-                Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar, 0, 0);
+                Portfolio portfolio = new Portfolio(
+                    txtBrokerID,
+                    txtPortfolioName,
+                    calendar,
+                    CommonUtils.toIntFee(txtBuyFee),
+                    CommonUtils.toIntFee(txtSellFee)
+                );
 
 
-                //mainApp.getDataManager().insertPortfolio(portfolio);
+                mainApp.getDataManager().insertPortfolio(portfolio);
 
-                //TODO: go to next activity and buy sell fee
+                Intent intent = new Intent(AddPortfolio.this, PortfolioActivity.class);
+                startActivity(intent);
 
-                Toast.makeText(AddPortfolio.this, "Successfully Add Portfolio", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPortfolio.this, "Successful", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
