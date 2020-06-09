@@ -166,4 +166,54 @@ public class Transaction {
     private void setTotal(int total) {
         this.total = total;
     }
+
+    public static class Summary {
+        private String fkStockId;
+        private int lot;
+        private int fee;
+        private int total;
+
+        public Summary(Cursor cursor) {
+            setFkStockId(cursor.getString(cursor.getColumnIndex(FK_STOCK_ID)));
+            setLot(cursor.getInt(cursor.getColumnIndex(LOT)));
+            setFee(cursor.getInt(cursor.getColumnIndex(FEE)));
+            setTotal(cursor.getInt(cursor.getColumnIndex(TOTAL)));
+        }
+
+        // getter
+
+        public String getFkStockId() {
+            return fkStockId;
+        }
+
+        public int getLot() {
+            return lot;
+        }
+
+        public int getFee() {
+            return fee;
+        }
+
+        public int getTotal() {
+            return total;
+        }
+
+        // setter
+
+        private void setFkStockId(String fkStockId) {
+            this.fkStockId = fkStockId;
+        }
+
+        private void setLot(int lot) {
+            this.lot = lot;
+        }
+
+        private void setFee(int fee) {
+            this.fee = fee;
+        }
+
+        private void setTotal(int total) {
+            this.total = total;
+        }
+    }
 }

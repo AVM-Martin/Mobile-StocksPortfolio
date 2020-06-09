@@ -114,6 +114,18 @@ public class DataManager {
         databaseManager.getTransactionManager().update(transaction);
     }
 
+    // transaction summary
+
+    public int transactionSummarySizeByPortfolio(int portfolioId) {
+        return databaseManager.getTransactionManager().sizeSummaryByPortfolio(portfolioId);
+    }
+
+    public Transaction.Summary getTransactionSummaryByPortfolioByPosition(int portfolioId, int position) {
+        return databaseManager
+            .getTransactionManager()
+            .getSummaryByPortfolioByPosition(portfolioId, position);
+    }
+
     // stock price
 
     public void reloadOnlineStockPrice(OnlineDataLoaderUtils loaderUtils, String stockId) {
