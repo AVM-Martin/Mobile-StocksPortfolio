@@ -91,9 +91,9 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                     etShares.requestFocus();
                 }
                 else{
-                    int transactionType = Transaction.TYPE_BUY;
+                    int transactionType = Transaction.BUY;
                     if(rbTransaction.getText().equals("Sell")){
-                        transactionType = Transaction.TYPE_SELL;
+                        transactionType = Transaction.SELL;
                     }
                     //int fkPortfolioId = ;
                     String fkStockId = item;

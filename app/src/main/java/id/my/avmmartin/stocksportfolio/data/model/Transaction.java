@@ -18,8 +18,8 @@ public class Transaction {
     private static final String FEE = TransactionManager.FEE;
     private static final String TOTAL = TransactionManager.TOTAL;
 
-    public static final int TYPE_BUY = TransactionManager.TYPE_BUY;
-    public static final int TYPE_SELL = TransactionManager.TYPE_SELL;
+    public static final int BUY = TransactionManager.TYPE_BUY;
+    public static final int SELL = TransactionManager.TYPE_SELL;
 
     private int id;
     private int fkPortfolioId;
@@ -83,7 +83,7 @@ public class Transaction {
         setLot(lot);
         setFee(fee);
 
-        if (type == TYPE_BUY) {
+        if (type == BUY) {
             setTotal(-lot * price + fee);
         } else {
             setTotal(lot * price + fee);
