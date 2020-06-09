@@ -80,12 +80,13 @@ public class Transaction {
         setType(type);
         setTransactionDate(transactionDate);
         setPrice(price);
-        setLot(lot);
         setFee(fee);
 
         if (type == BUY) {
+            setLot(lot);
             setTotal(-lot * price + fee);
         } else {
+            setLot(-lot);
             setTotal(lot * price + fee);
         }
     }
