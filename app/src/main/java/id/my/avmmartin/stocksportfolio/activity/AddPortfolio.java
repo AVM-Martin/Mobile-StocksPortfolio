@@ -153,7 +153,7 @@ public class AddPortfolio extends AppCompatActivity {
                     return;
                 }
 
-                Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar);
+                Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar, 0, 0);
 
 
                 //mainApp.getDataManager().insertPortfolio(portfolio);

@@ -18,8 +18,8 @@ public class Transaction {
     private static final String FEE = TransactionManager.FEE;
     private static final String TOTAL = TransactionManager.TOTAL;
 
-    public static final int TYPE_BUY = TransactionManager.TYPE_BUY;
-    public static final int TYPE_SELL = TransactionManager.TYPE_SELL;
+    public static final int BUY = TransactionManager.TYPE_BUY;
+    public static final int SELL = TransactionManager.TYPE_SELL;
 
     private int id;
     private int fkPortfolioId;
@@ -80,12 +80,13 @@ public class Transaction {
         setType(type);
         setTransactionDate(transactionDate);
         setPrice(price);
-        setLot(lot);
         setFee(fee);
 
-        if (type == TYPE_BUY) {
+        if (type == BUY) {
+            setLot(lot);
             setTotal(-lot * price + fee);
         } else {
+            setLot(-lot);
             setTotal(lot * price + fee);
         }
     }
@@ -164,5 +165,55 @@ public class Transaction {
 
     private void setTotal(int total) {
         this.total = total;
+    }
+
+    public static class Summary {
+        private String fkStockId;
+        private int lot;
+        private int fee;
+        private int total;
+
+        public Summary(Cursor cursor) {
+            setFkStockId(cursor.getString(cursor.getColumnIndex(FK_STOCK_ID)));
+            setLot(cursor.getInt(cursor.getColumnIndex(LOT)));
+            setFee(cursor.getInt(cursor.getColumnIndex(FEE)));
+            setTotal(cursor.getInt(cursor.getColumnIndex(TOTAL)));
+        }
+
+        // getter
+
+        public String getFkStockId() {
+            return fkStockId;
+        }
+
+        public int getLot() {
+            return lot;
+        }
+
+        public int getFee() {
+            return fee;
+        }
+
+        public int getTotal() {
+            return total;
+        }
+
+        // setter
+
+        private void setFkStockId(String fkStockId) {
+            this.fkStockId = fkStockId;
+        }
+
+        private void setLot(int lot) {
+            this.lot = lot;
+        }
+
+        private void setFee(int fee) {
+            this.fee = fee;
+        }
+
+        private void setTotal(int total) {
+            this.total = total;
+        }
     }
 }

@@ -38,6 +38,33 @@ public class TransactionManager {
         return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
     }
 
+    public int sizeSummaryByPortfolio(int portfolioId) {
+        String[] columns = {
+            FK_STOCK_ID,
+            "sum(" + LOT + ") as " + LOT,
+            "sum(" + FEE + ") as " + FEE,
+            "sum(" + TOTAL + ") as " + TOTAL
+        };
+        String selection = (
+            FK_PORTFOLIO_ID + " = ?"
+        );
+        String[] selectionArgs = {
+            Integer.toString(portfolioId)
+        };
+        String groupBy = (
+            FK_STOCK_ID
+        );
+        String having = (
+            LOT + " > 0"
+        );
+        String orderBy = (
+            FK_STOCK_ID
+        );
+
+        try (Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy)) {
+            return cursor.getCount();
+        }
+    }
     // create read update
 
     public void insert(Transaction transaction) {
@@ -76,6 +103,35 @@ public class TransactionManager {
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
             cursor.moveToPosition(position);
             return new Transaction(cursor);
+        }
+    }
+
+    public Transaction.Summary getSummaryByPortfolioByPosition(int portfolioId, int position) {
+        String[] columns = {
+            FK_STOCK_ID,
+            "sum(" + LOT + ") as " + LOT,
+            "sum(" + FEE + ") as " + FEE,
+            "sum(" + TOTAL + ") as " + TOTAL
+        };
+        String selection = (
+            FK_PORTFOLIO_ID + " = ?"
+        );
+        String[] selectionArgs = {
+            Integer.toString(portfolioId)
+        };
+        String groupBy = (
+            FK_STOCK_ID
+        );
+        String having = (
+            LOT + " > 0"
+        );
+        String orderBy = (
+            FK_STOCK_ID
+        );
+
+        try (Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, groupBy, having, orderBy)) {
+            cursor.moveToPosition(position);
+            return new Transaction.Summary(cursor);
         }
     }
 

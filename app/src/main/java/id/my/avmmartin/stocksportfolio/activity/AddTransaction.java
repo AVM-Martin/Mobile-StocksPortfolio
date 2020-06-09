@@ -145,10 +145,10 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
                     int price = Integer.valueOf(etPrice.getText().toString());
                     String brokerId = mainApp.getDataManager().getPortfolioByPosition(portfolioPosition).getFkBrokerId();
                     int lot = Integer.valueOf(etShares.getText().toString());
-                    int transactionType = Transaction.TYPE_BUY;
+                    int transactionType = Transaction.BUY;
                     int fee = mainApp.getDataManager().getBrokerById(brokerId).getBuyFee();
                     if(rbTransaction.getText().equals("Sell")){
-                        transactionType = Transaction.TYPE_SELL;
+                        transactionType = Transaction.SELL;
                         fee = mainApp.getDataManager().getBrokerById(brokerId).getSellFee();
                     }
                     int type = transactionType;
