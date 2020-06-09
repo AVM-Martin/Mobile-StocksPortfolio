@@ -8,12 +8,14 @@ import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 
 public class PortfolioManager {
     static final String TABLE_NAME = "portfolio";
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
 
     public static final String ID = "id";
     public static final String FK_BROKER_ID = "fk_broker_id";
     public static final String NAME = "name";
     public static final String CREATED_DATE = "created_date";
+    public static final String BUY_FEE = "buy_fee";
+    public static final String SELL_FEE = "sell_fee";
     public static final String STATUS = "status";
 
     public static final int STATUS_ACTIVE = 1;
@@ -85,6 +87,8 @@ public class PortfolioManager {
                 + ""
                 + NAME + " TEXT, "
                 + CREATED_DATE + " INTEGER, "
+                + BUY_FEE + " INTEGER,"
+                + SELL_FEE + " INTEGER,"
                 + STATUS + " INTEGER, "
                 + ""
                 + "FOREIGN KEY (" + FK_BROKER_ID + ") "
