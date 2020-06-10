@@ -8,15 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
-import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class TransactionListViewHolder extends RecyclerView.ViewHolder {
     private TextView tvTransactionItem, tvTransactionAvg, tvTransactionLast, tvTransactionLot;
 
-    private Transaction transaction;
+    private Transaction.Summary summary;
 
-    void bindData(Transaction transaction) {
-        this.transaction = transaction;
+    void bindData(Transaction.Summary summary) {
+        this.summary = summary;
         loadData();
     }
 
@@ -37,10 +36,10 @@ public class TransactionListViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void loadData() {
-        tvTransactionItem.setText(transaction.getFkStockId());
-        tvTransactionAvg.setText(String.valueOf(transaction.getPrice()));
+        tvTransactionItem.setText(summary.getFkStockId());
+        tvTransactionAvg.setText(String.valueOf(15));
         tvTransactionLast.setText("0");
-        tvTransactionLot.setText(String.valueOf(transaction.getLot()));
+        tvTransactionLot.setText(String.valueOf(summary.getLot()));
     }
 
     private void setEvents() {

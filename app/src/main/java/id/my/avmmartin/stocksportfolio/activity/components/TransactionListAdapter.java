@@ -14,6 +14,7 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 public class TransactionListAdapter extends RecyclerView.Adapter<TransactionListViewHolder> {
     private StocksPortfolio mainApp;
     private Activity activity;
+    private int portfolioId;
 
     // overridden method
 
@@ -29,12 +30,12 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
 
     @Override
     public void onBindViewHolder(@NonNull TransactionListViewHolder holder, int position) {
-        holder.bindData(mainApp.getDataManager().getTransactionByPosition(position));
+        holder.bindData(mainApp.getDataManager().getTransactionSummaryByPortfolioByPosition(portfolioId, position));
     }
 
     @Override
     public int getItemCount() {
-        return mainApp.getDataManager().transactionSize();
+        return mainApp.getDataManager().transactionSummarySizeByPortfolio(portfolioId);
     }
 
     // constructor
@@ -42,5 +43,11 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
     public TransactionListAdapter(StocksPortfolio mainApp, Activity activity) {
         this.mainApp = mainApp;
         this.activity = activity;
+    }
+
+    // setter
+
+    public void setPortfolioId(int portfolioId) {
+        this.portfolioId = portfolioId;
     }
 }

@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Spinner;
 
@@ -63,6 +65,19 @@ public class ListPortfolioActivity extends AppCompatActivity {
     }
 
     private void setEvents() {
-        // none
+        spPortfolio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                transactionListAdapter.setPortfolioId(
+                    mainApp.getDataManager().getPortfolioByPosition(position).getId()
+                );
+                transactionListAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // none
+            }
+        });
     }
 }
