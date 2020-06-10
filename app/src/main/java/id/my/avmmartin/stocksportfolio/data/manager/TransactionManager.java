@@ -20,6 +20,10 @@ public class TransactionManager {
     public static final String FEE = "fee";
     public static final String TOTAL = "total";
 
+    public static final String SUM_LOT = "sum_lot";
+    public static final String SUM_FEE = "sum_fee";
+    public static final String SUM_TOTAL = "sum_total";
+
     public static final int TYPE_BUY = 1;
     public static final int TYPE_SELL = 2;
 
@@ -41,9 +45,9 @@ public class TransactionManager {
     public int sizeSummaryByPortfolio(int portfolioId) {
         String[] columns = {
             FK_STOCK_ID,
-            "sum(" + LOT + ") as " + LOT,
-            "sum(" + FEE + ") as " + FEE,
-            "sum(" + TOTAL + ") as " + TOTAL
+            "sum(" + LOT + ") as " + SUM_LOT,
+            "sum(" + FEE + ") as " + SUM_FEE,
+            "sum(" + TOTAL + ") as " + SUM_TOTAL
         };
         String selection = (
             FK_PORTFOLIO_ID + " = ?"
@@ -55,7 +59,7 @@ public class TransactionManager {
             FK_STOCK_ID
         );
         String having = (
-            LOT + " > 0"
+            SUM_LOT + " > 0"
         );
         String orderBy = (
             FK_STOCK_ID
@@ -109,9 +113,9 @@ public class TransactionManager {
     public Transaction.Summary getSummaryByPortfolioByPosition(int portfolioId, int position) {
         String[] columns = {
             FK_STOCK_ID,
-            "sum(" + LOT + ") as " + LOT,
-            "sum(" + FEE + ") as " + FEE,
-            "sum(" + TOTAL + ") as " + TOTAL
+            "sum(" + LOT + ") as " + SUM_LOT,
+            "sum(" + FEE + ") as " + SUM_FEE,
+            "sum(" + TOTAL + ") as " + SUM_TOTAL
         };
         String selection = (
             FK_PORTFOLIO_ID + " = ?"
@@ -123,7 +127,7 @@ public class TransactionManager {
             FK_STOCK_ID
         );
         String having = (
-            LOT + " > 0"
+            SUM_LOT + " > 0"
         );
         String orderBy = (
             FK_STOCK_ID

@@ -18,6 +18,10 @@ public class Transaction {
     private static final String FEE = TransactionManager.FEE;
     private static final String TOTAL = TransactionManager.TOTAL;
 
+    private static final String SUM_LOT = TransactionManager.SUM_LOT;
+    private static final String SUM_FEE = TransactionManager.SUM_FEE;
+    private static final String SUM_TOTAL = TransactionManager.SUM_TOTAL;
+
     public static final int BUY = TransactionManager.TYPE_BUY;
     public static final int SELL = TransactionManager.TYPE_SELL;
 
@@ -118,7 +122,7 @@ public class Transaction {
     }
 
     public int getLot() {
-        return price;
+        return lot;
     }
 
     public int getFee() {
@@ -175,9 +179,9 @@ public class Transaction {
 
         public Summary(Cursor cursor) {
             setFkStockId(cursor.getString(cursor.getColumnIndex(FK_STOCK_ID)));
-            setLot(cursor.getInt(cursor.getColumnIndex(LOT)));
-            setFee(cursor.getInt(cursor.getColumnIndex(FEE)));
-            setTotal(cursor.getInt(cursor.getColumnIndex(TOTAL)));
+            setLot(cursor.getInt(cursor.getColumnIndex(SUM_LOT)));
+            setFee(cursor.getInt(cursor.getColumnIndex(SUM_FEE)));
+            setTotal(cursor.getInt(cursor.getColumnIndex(SUM_TOTAL)));
         }
 
         // getter
