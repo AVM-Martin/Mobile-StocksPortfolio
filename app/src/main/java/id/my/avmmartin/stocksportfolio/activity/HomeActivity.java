@@ -45,9 +45,8 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(HomeActivity.this,PortfolioActivity.class);
+                    Intent intent = new Intent(HomeActivity.this,ListPortfolioActivity.class);
                     startActivity(intent);
-                    finish();
                     return true;
                 }
                 else if(item.getItemId() == R.id.navTransaction){

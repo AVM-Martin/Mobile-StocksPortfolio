@@ -11,7 +11,7 @@ import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class TransactionListViewHolder extends RecyclerView.ViewHolder {
-    private TextView tvTransactionDate;
+    private TextView tvTransactionItem, tvTransactionAvg, tvTransactionLast, tvTransactionLot;
 
     private Transaction transaction;
 
@@ -30,11 +30,17 @@ public class TransactionListViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void initComponents() {
-        tvTransactionDate = itemView.findViewById(R.id.tvTransactionDate);
+        tvTransactionItem = itemView.findViewById(R.id.tvTransactionItem);
+        tvTransactionAvg = itemView.findViewById(R.id.tvTransactionAvg);
+        tvTransactionLast = itemView.findViewById(R.id.tvTransactionLast);
+        tvTransactionLot = itemView.findViewById(R.id.tvTransactionLot);
     }
 
     private void loadData() {
-        tvTransactionDate.setText(CommonUtils.toDateFormat(transaction.getTransactionDate()));
+        tvTransactionItem.setText(transaction.getFkStockId());
+        tvTransactionAvg.setText(String.valueOf(transaction.getPrice()));
+        tvTransactionLast.setText("0");
+        tvTransactionLot.setText(String.valueOf(transaction.getLot()));
     }
 
     private void setEvents() {

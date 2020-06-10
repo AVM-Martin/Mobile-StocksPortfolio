@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <TextView
-        android:id="@+id/tvLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SPI"
-        android:textSize="40sp"
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:background="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:id="@+id/tvStockPortfolio"
@@ -21,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Stock Portfolio"
         android:textSize="25sp"
-        android:layout_below="@id/tvLogo"
+        android:layout_below="@id/ivLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>
 

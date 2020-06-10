@@ -20,4 +20,5 @@
 
     <string name="input_password">Input Password</string>
     <string name="confirm_password">Confirm Password</string>
+
 </resources>
