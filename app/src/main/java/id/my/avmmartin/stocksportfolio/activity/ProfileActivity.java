@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Bottom Nav View
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navTransaction);
+        bottomNavigationView.setSelectedItemId(R.id.navProfile);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
