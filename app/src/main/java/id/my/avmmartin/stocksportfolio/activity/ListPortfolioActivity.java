@@ -1,14 +1,20 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
@@ -20,9 +26,12 @@ public class ListPortfolioActivity extends AppCompatActivity {
 
     private Spinner spPortfolio;
     private RecyclerView rvTransaction;
+    private ImageButton imgBtnAdd;
 
     private PortfolioSpinnerAdapter portfolioSpinnerAdapter;
     private TransactionListAdapter transactionListAdapter;
+
+    private com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,8 @@ public class ListPortfolioActivity extends AppCompatActivity {
 
         spPortfolio = findViewById(R.id.spPortfolio);
         rvTransaction = findViewById(R.id.rvTransactions);
+        imgBtnAdd = findViewById(R.id.imgBtnAdd);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         portfolioSpinnerAdapter = new PortfolioSpinnerAdapter(mainApp, this);
         transactionListAdapter = new TransactionListAdapter(mainApp, this);
@@ -79,5 +90,51 @@ public class ListPortfolioActivity extends AppCompatActivity {
                 // none
             }
         });
+
+        imgBtnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListPortfolioActivity.this, AddPortfolio.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.navHome){
+                    Intent intent = new Intent(ListPortfolioActivity.this,HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navPortfolio){
+                    Intent intent = new Intent(ListPortfolioActivity.this,ListPortfolioActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navTransaction){
+                    Intent intent = new Intent(ListPortfolioActivity.this,TransactionActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navProfile) {
+                    Intent intent = new Intent(ListPortfolioActivity.this,ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if(item.getItemId() == R.id.navExit){
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 }

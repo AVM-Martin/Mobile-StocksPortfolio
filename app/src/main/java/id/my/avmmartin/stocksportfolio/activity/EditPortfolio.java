@@ -31,7 +31,7 @@ public class EditPortfolio extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(EditPortfolio.this,PortfolioActivity.class);
+                    Intent intent = new Intent(EditPortfolio.this,ListPortfolioActivity.class);
                     startActivity(intent);
                     finish();
                     return true;

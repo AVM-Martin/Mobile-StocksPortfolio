@@ -171,7 +171,7 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(EditTransaction.this,PortfolioActivity.class);
+                    Intent intent = new Intent(EditTransaction.this,ListPortfolioActivity.class);
                     startActivity(intent);
                     finish();
                     return true;

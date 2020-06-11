@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
+import java.util.List;
+
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
@@ -43,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(ProfileActivity.this,PortfolioActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this, ListPortfolioActivity.class);
                     startActivity(intent);
                     finish();
                     return true;

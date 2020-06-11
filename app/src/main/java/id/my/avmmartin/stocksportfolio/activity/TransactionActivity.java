@@ -67,7 +67,7 @@ public class TransactionActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(TransactionActivity.this,PortfolioActivity.class);
+                    Intent intent = new Intent(TransactionActivity.this,ListPortfolioActivity.class);
                     startActivity(intent);
                     finish();
                     return true;

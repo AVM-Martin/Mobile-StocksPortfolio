@@ -20,5 +20,7 @@
 
     <string name="input_password">Input Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="date_created">Date Created</string>
+    <string name="dd_mm_yyyy">dd/mm/yyyy</string>
 
 </resources>
