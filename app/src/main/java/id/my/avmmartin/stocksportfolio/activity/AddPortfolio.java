@@ -156,7 +156,7 @@ public class AddPortfolio extends AppCompatActivity {
                 Portfolio portfolio = new Portfolio(txtBrokerID,txtPortfolioName,calendar, 0, 0);
 
 
-                //mainApp.getDataManager().insertPortfolio(portfolio);
+                mainApp.getDataManager().insertPortfolio(portfolio);
 
                 //TODO: go to next activity and buy sell fee
 

@@ -95,11 +95,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private int countTransaction(int stockPrice, int stockLot, int transactionFee, int transactionType){
         int total = 0;
-        if(transactionType == Transaction.TYPE_BUY){
-            total = stockPrice * stockLot * (10000 + transactionFee);
+        if(transactionType == Transaction.BUY){
+            total = stockPrice * stockLot * (10000 );
         }
         else{
-            total = stockPrice * stockLot * (10000 - transactionFee);
+            total = stockPrice * stockLot * (10000);
         }
         return total;
     }
@@ -109,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
         //Toast.makeText(this, String.valueOf(transactionSize), Toast.LENGTH_SHORT).show();
         for(int i=0; i<transactionSize; i++) {
             Transaction trx = mainApp.getDataManager().getTransactionByPosition(i);
-            if(trx.getType() == Transaction.TYPE_BUY){
+            if(trx.getType() == Transaction.BUY){
                 total_buy += countTransaction(trx.getPrice(),trx.getLot(),trx.getFee(),trx.getType());
                 // For Debug Only
                 String temp = "Stock Name : ";

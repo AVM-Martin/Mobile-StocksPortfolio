@@ -118,7 +118,7 @@ public class Transaction {
     }
 
     public int getLot() {
-        return price;
+        return lot;
     }
 
     public int getFee() {
