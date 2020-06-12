@@ -18,6 +18,8 @@ public class TransactionSummary {
     private int lot;
     private double total;
 
+    private int currentPrice;
+
     public void insertTransaction(Transaction transaction) {
         setLot(getLot() + transaction.getLot());
 
@@ -43,6 +45,8 @@ public class TransactionSummary {
         setAvgPrice(cursor.getDouble(cursor.getColumnIndex(AVG_PRICE)));
         setLot(cursor.getInt(cursor.getColumnIndex(LOT)));
         setTotal(cursor.getDouble(cursor.getColumnIndex(TOTAL)));
+
+        setCurrentPrice(0);
     }
 
     public ContentValues toContentValues() {
@@ -65,6 +69,8 @@ public class TransactionSummary {
         setAvgPrice(0);
         setLot(0);
         setTotal(0);
+
+        setCurrentPrice(0);
     }
 
     // getter
@@ -89,6 +95,10 @@ public class TransactionSummary {
         return total;
     }
 
+    public int getCurrentPrice() {
+        return currentPrice;
+    }
+
     // setter
 
     private void setFkPortfolioId(int fkPortfolioId) {
@@ -109,5 +119,9 @@ public class TransactionSummary {
 
     private void setTotal(double total) {
         this.total = total;
+    }
+
+    public void setCurrentPrice(int currentPrice) {
+        this.currentPrice = currentPrice;
     }
 }
