@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -189,6 +190,8 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(EditTransaction.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }

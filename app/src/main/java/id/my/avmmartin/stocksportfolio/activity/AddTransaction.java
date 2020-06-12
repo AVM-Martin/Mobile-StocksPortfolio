@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -189,6 +190,8 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(AddTransaction.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }
@@ -250,4 +253,5 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
         String companyName = mainApp.getDataManager().getStockByPosition(stockIndex).getName();
         tvCompanyNameValue.setText(companyName);
     }
+
 }

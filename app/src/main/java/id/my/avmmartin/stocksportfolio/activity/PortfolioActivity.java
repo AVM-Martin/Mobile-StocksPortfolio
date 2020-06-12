@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -69,6 +70,8 @@ public class PortfolioActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(PortfolioActivity.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }
@@ -97,4 +100,5 @@ public class PortfolioActivity extends AppCompatActivity {
     private void setEvents() {
         // none
     }
+
 }

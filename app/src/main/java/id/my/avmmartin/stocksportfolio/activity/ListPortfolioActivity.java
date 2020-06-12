@@ -1,6 +1,7 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -166,4 +167,5 @@ public class ListPortfolioActivity extends AppCompatActivity {
             );
         }
     }
+
 }

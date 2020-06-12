@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +34,6 @@ public class TransactionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transaction);
         mainApp = (StocksPortfolio) getApplication();
         ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
-        ImageButton imgBtnEditTransaction = findViewById(R.id.imgBtnEditTransaction);
         //ImageButton imgBtnDeleteTransaction;
         imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,25 +48,13 @@ public class TransactionActivity extends AppCompatActivity {
 
             }
         });
-        imgBtnEditTransaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mainApp.getDataManager().portfolioSize() == 0){
-                    Toast.makeText(TransactionActivity.this, "Please Register Portfolio First", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Intent intent = new Intent(TransactionActivity.this, EditTransaction.class);
-                    startActivity(intent);
-                }
-            }
-        });
 
 
         // Transaction Table
         rvTransactions = findViewById(R.id.rvTransactions);
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvTransactions.setLayoutManager(linearLayoutManager);
-        adapter = new DataAdapter(mainApp);
+        adapter = new DataAdapter(this,mainApp);
         rvTransactions.setAdapter(adapter);
 
 
@@ -99,6 +87,8 @@ public class TransactionActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(TransactionActivity.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }
@@ -124,8 +114,6 @@ public class TransactionActivity extends AppCompatActivity {
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
-
-        //imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
     }
 
     private void loadData() {
@@ -135,4 +123,5 @@ public class TransactionActivity extends AppCompatActivity {
     private void setEvents() {
         // none
     }
+
 }

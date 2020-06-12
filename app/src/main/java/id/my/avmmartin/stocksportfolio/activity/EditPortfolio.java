@@ -1,6 +1,7 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -49,6 +50,8 @@ public class EditPortfolio extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(EditPortfolio.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }

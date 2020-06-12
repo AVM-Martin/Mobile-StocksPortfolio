@@ -1,5 +1,6 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -62,6 +63,8 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 }
                 else if(item.getItemId() == R.id.navExit){
+                    Intent intent = new Intent(HomeActivity.this,MainActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
                 }
