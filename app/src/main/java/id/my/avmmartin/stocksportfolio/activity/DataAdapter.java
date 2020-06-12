@@ -1,7 +1,5 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
+import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.R;
+import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    Context ctx;
-    ArrayList<Transaction> trx;
+    private StocksPortfolio mainApp;
 
-    public DataAdapter(Context ctx, ArrayList<Transaction> trx){
-        this.ctx = ctx;
-        this.trx = trx;
+    public DataAdapter(StocksPortfolio mainApp) {
+        this.mainApp = mainApp;
     }
-
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,20 +28,21 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DataAdapter.ViewHolder holder, int position) {
-        Transaction transaction = trx.get(position);
-        holder.tvTrxNumber.setText(transaction.getId()+1);
-        holder.tvTrxDate.setText(transaction.getTransactionDate() + "");
+        Transaction transaction = mainApp.getDataManager().getTransactionByPosition(position);
+
+        holder.tvTrxNumber.setText(Integer.toString(transaction.getId()));
+        holder.tvTrxDate.setText(CommonUtils.toDateFormat(transaction.getTransactionDate()));
         holder.tvStockName.setText(transaction.getFkStockId());
-        holder.tvStockPrice.setText(transaction.getPrice());
-        holder.tvStockLot.setText(transaction.getLot());
+        holder.tvStockPrice.setText(Integer.toString(transaction.getPrice()));
+        holder.tvStockLot.setText(Integer.toString(transaction.getLot()));
         if(transaction.getType() == Transaction.BUY)holder.tvTrxType.setText("B");
         else holder.tvTrxType.setText("S");
         int result = (transaction.getPrice()) * (transaction.getLot()) * 100;
-        holder.tvTrxTotal.setText(result);
+        holder.tvTrxTotal.setText(Integer.toString(result));
     }
 
     public int getItemCount(){
-        return (trx == null) ? 0 : trx.size();
+        return mainApp.getDataManager().transactionSize();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

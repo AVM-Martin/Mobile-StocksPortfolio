@@ -27,7 +27,6 @@ public class TransactionActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
     public static RecyclerView rvTransactions;
     public static DataAdapter adapter;
-    public static ArrayList<Transaction> trxList;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +66,7 @@ public class TransactionActivity extends AppCompatActivity {
         rvTransactions = findViewById(R.id.rvTransactions);
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvTransactions.setLayoutManager(linearLayoutManager);
-        adapter = new DataAdapter(this,trxList);
+        adapter = new DataAdapter(mainApp);
         rvTransactions.setAdapter(adapter);
 
 
@@ -117,6 +116,12 @@ public class TransactionActivity extends AppCompatActivity {
         setEvents();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
 
@@ -124,19 +129,10 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        showListPortfolio();
+        //
     }
 
     private void setEvents() {
         // none
-    }
-
-    private void showListPortfolio() {
-        trxList = new ArrayList<Transaction>();
-        int trxSize = mainApp.getDataManager().transactionSize();
-        Toast.makeText(this, String.valueOf(trxSize), Toast.LENGTH_SHORT).show();
-        for(int i=0; i<trxSize; i++) {
-            trxList.add(mainApp.getDataManager().getTransactionByPosition(i));
-        }
     }
 }
