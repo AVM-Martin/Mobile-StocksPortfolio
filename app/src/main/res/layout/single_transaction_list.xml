@@ -8,32 +8,40 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Item"
+        android:background="@drawable/border"
         android:layout_weight="1"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:padding="4dp"/>
 
     <TextView
         android:id="@+id/tvTransactionAvg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Avg"
+        android:background="@drawable/border"
         android:layout_weight="1"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:padding="4dp"/>
 
     <TextView
         android:id="@+id/tvTransactionLast"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Last"
+        android:background="@drawable/border"
         android:layout_weight="1"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:padding="4dp"/>
 
     <TextView
         android:id="@+id/tvTransactionLot"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Lot"
+        android:background="@drawable/border"
         android:layout_weight="1"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:padding="4dp"/>
 
 
 
