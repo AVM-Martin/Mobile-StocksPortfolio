@@ -33,5 +33,8 @@ public class OnlineDataLoaderUtils {
     public OnlineDataLoaderUtils(Context context) {
         progressDialog = new ProgressDialog(context);
         progressDialog.setMessage(context.getString(R.string.load_data));
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 }
