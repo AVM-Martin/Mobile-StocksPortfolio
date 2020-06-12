@@ -12,7 +12,6 @@ import android.widget.Toast;
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.activity.dialog.LoginDialog;
-import id.my.avmmartin.stocksportfolio.data.PreferencesManager;
 import id.my.avmmartin.stocksportfolio.exception.GeneralException;
 
 public class MainActivity extends AppCompatActivity implements LoginDialog.Listener {

@@ -1,28 +1,19 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,8 +21,6 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.DatabaseManager;
-import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
