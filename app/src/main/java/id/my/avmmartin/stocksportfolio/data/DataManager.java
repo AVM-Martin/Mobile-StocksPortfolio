@@ -6,6 +6,7 @@ import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Stock;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
+import id.my.avmmartin.stocksportfolio.data.model.TransactionSummary;
 import id.my.avmmartin.stocksportfolio.exception.GeneralException;
 import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
@@ -93,6 +94,13 @@ public class DataManager {
 
     public void insertTransaction(Transaction transaction) {
         databaseManager.getTransactionManager().insert(transaction);
+
+        TransactionSummary transactionSummary = databaseManager
+            .getTransactionSummaryManager()
+            .getByPortfolioByStock(transaction.getFkPortfolioId(), transaction.getFkStockId());
+
+        transactionSummary.insertTransaction(transaction);
+        databaseManager.getTransactionSummaryManager().update(transactionSummary);
     }
 
     public Transaction getTransactionById(int id) {
@@ -109,18 +117,19 @@ public class DataManager {
 
     public void updateTransaction(Transaction transaction) {
         databaseManager.getTransactionManager().update(transaction);
+        // TODO: update the summary
     }
 
     // transaction summary
 
     public int transactionSummarySizeByPortfolio(int portfolioId) {
-        return databaseManager.getTransactionManager().sizeSummaryByPortfolio(portfolioId);
+        return databaseManager.getTransactionSummaryManager().sizeByPortfolio(portfolioId);
     }
 
-    public Transaction.Summary getTransactionSummaryByPortfolioByPosition(int portfolioId, int position) {
+    public TransactionSummary getTransactionSummaryByPortfolioByPosition(int portfolioId, int position) {
         return databaseManager
-            .getTransactionManager()
-            .getSummaryByPortfolioByPosition(portfolioId, position);
+            .getTransactionSummaryManager()
+            .getByPortfolioByPosition(portfolioId, position);
     }
 
     // stock price

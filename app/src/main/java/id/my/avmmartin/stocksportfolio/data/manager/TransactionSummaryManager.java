@@ -1,35 +1,26 @@
 package id.my.avmmartin.stocksportfolio.data.manager;
 
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
-import id.my.avmmartin.stocksportfolio.data.model.Transaction;
+import id.my.avmmartin.stocksportfolio.data.model.TransactionSummary;
 
-public class TransactionManager {
-    static final String TABLE_NAME = "transactions";
+public class TransactionSummaryManager {
+    static final String TABLE_NAME = "transactions_summary";
     public static final int VERSION = 1;
 
-    public static final String ID = "id";
     public static final String FK_PORTFOLIO_ID = "fk_portfolio_id";
     public static final String FK_STOCK_ID = "fk_stock_id";
-    public static final String TYPE = "type";
-    public static final String TRANSACTION_DATE = "transaction_date";
-    public static final String PRICE = "price";
+    public static final String AVG_PRICE = "price";
     public static final String LOT = "lot";
-    public static final String FEE = "fee";
     public static final String TOTAL = "total";
-
-    public static final int TYPE_BUY = 1;
-    public static final int TYPE_SELL = 2;
-
-    public int size() {
-        return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
-    }
 
     public int sizeByPortfolio(int portfolioId) {
         String selection = (
             FK_PORTFOLIO_ID + " = ?"
+                + LOT + " > 0"
         );
         String[] selectionArgs = {
             Integer.toString(portfolioId)
@@ -40,34 +31,32 @@ public class TransactionManager {
 
     // create read update
 
-    public void insert(Transaction transaction) {
-        db.insert(TABLE_NAME, null, transaction.toContentValues());
+    public void insert(TransactionSummary transactionSummary) {
+        db.insert(TABLE_NAME, null, transactionSummary.toContentValues());
     }
 
-    public Transaction getById(int id) {
+    public TransactionSummary getByPortfolioByStock(int portfolioId, String stockId) {
         String selection = (
-            ID + " = ?"
+            FK_PORTFOLIO_ID + " = ? "
+                + FK_STOCK_ID + " = ?"
         );
         String[] selectionArgs = {
-            Integer.toString(id)
+            Integer.toString(portfolioId),
+            stockId
         };
 
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
             cursor.moveToFirst();
-            return new Transaction(cursor);
+            return new TransactionSummary(cursor);
+        } catch (CursorIndexOutOfBoundsException e) {
+            return new TransactionSummary(portfolioId, stockId);
         }
     }
 
-    public Transaction getByPosition(int position) {
-        try (Cursor cursor = db.query(TABLE_NAME, null, null, null, null, null, null)) {
-            cursor.moveToPosition(position);
-            return new Transaction(cursor);
-        }
-    }
-
-    public Transaction getByPortfolioByPosition(int portfolioId, int position) {
+    public TransactionSummary getByPortfolioByPosition(int portfolioId, int position) {
         String selection = (
-            FK_PORTFOLIO_ID + " = ?"
+            FK_PORTFOLIO_ID + " = ? "
+                + LOT + " > 0"
         );
         String[] selectionArgs = {
             Integer.toString(portfolioId)
@@ -75,19 +64,21 @@ public class TransactionManager {
 
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
             cursor.moveToPosition(position);
-            return new Transaction(cursor);
+            return new TransactionSummary(cursor);
         }
     }
 
-    public void update(Transaction transaction) {
+    public void update(TransactionSummary transactionSummary) {
         String whereClause = (
-            ID + " = ?"
+            FK_PORTFOLIO_ID + " = ? "
+                + FK_STOCK_ID + " = ?"
         );
         String[] whereArgs = {
-            Integer.toString(transaction.getId())
+            Integer.toString(transactionSummary.getFkPortfolioId()),
+            transactionSummary.getFkStockId()
         };
 
-        db.update(TABLE_NAME, transaction.toContentValues(), whereClause, whereArgs);
+        db.update(TABLE_NAME, transactionSummary.toContentValues(), whereClause, whereArgs);
     }
 
     // overridden method
@@ -95,16 +86,14 @@ public class TransactionManager {
     public static void onCreate(SQLiteDatabase db) {
         db.execSQL(
             "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FK_PORTFOLIO_ID + " INTEGER, "
                 + FK_STOCK_ID + " TEXT, "
                 + ""
-                + TYPE + " INTEGER, "
-                + TRANSACTION_DATE + " INTEGER, "
-                + PRICE + " INTEGER, "
+                + AVG_PRICE + " INTEGER, "
                 + LOT + " INTEGER, "
-                + FEE + " INTEGER, "
                 + TOTAL + " INTEGER, "
+                + ""
+                + "PRIMARY KEY (" + FK_PORTFOLIO_ID + ", " + FK_STOCK_ID + "), "
                 + ""
                 + "FOREIGN KEY (" + FK_PORTFOLIO_ID + ") "
                 + "REFERENCES " + PortfolioManager.TABLE_NAME + " (" + PortfolioManager.ID + ") "
@@ -132,7 +121,7 @@ public class TransactionManager {
 
     private SQLiteDatabase db;
 
-    public TransactionManager(SQLiteDatabase db) {
+    public TransactionSummaryManager(SQLiteDatabase db) {
         this.db = db;
     }
 }

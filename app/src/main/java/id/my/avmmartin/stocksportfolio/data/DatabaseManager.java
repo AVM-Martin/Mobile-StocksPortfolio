@@ -8,6 +8,7 @@ import id.my.avmmartin.stocksportfolio.data.manager.BrokerManager;
 import id.my.avmmartin.stocksportfolio.data.manager.PortfolioManager;
 import id.my.avmmartin.stocksportfolio.data.manager.StockManager;
 import id.my.avmmartin.stocksportfolio.data.manager.TransactionManager;
+import id.my.avmmartin.stocksportfolio.data.manager.TransactionSummaryManager;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     private static final String DB_NAME = "stocksportfolio";
@@ -22,6 +23,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private PortfolioManager portfolioManager;
     private StockManager stockManager;
     private TransactionManager transactionManager;
+    private TransactionSummaryManager transactionSummaryManager;
 
     // overridden method
 
@@ -31,6 +33,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         StockManager.onCreate(db);
         PortfolioManager.onCreate(db);
         TransactionManager.onCreate(db);
+        TransactionSummaryManager.onCreate(db);
     }
 
     @Override
@@ -39,6 +42,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         StockManager.onUpgrade(db, oldVersion, newVersion);
         PortfolioManager.onUpgrade(db, oldVersion, newVersion);
         TransactionManager.onUpgrade(db, oldVersion, newVersion);
+        TransactionSummaryManager.onUpgrade(db, oldVersion, newVersion);
     }
 
     // constructor
@@ -54,6 +58,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         portfolioManager = new PortfolioManager(db);
         stockManager = new StockManager(db);
         transactionManager = new TransactionManager(db);
+        transactionSummaryManager = new TransactionSummaryManager(db);
     }
 
     // getter
@@ -72,5 +77,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     TransactionManager getTransactionManager() {
         return transactionManager;
+    }
+
+    TransactionSummaryManager getTransactionSummaryManager() {
+        return transactionSummaryManager;
     }
 }
