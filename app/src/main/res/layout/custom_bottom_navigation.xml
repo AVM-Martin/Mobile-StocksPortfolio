@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:background="@color/colorPrimary">
+
+    <LinearLayout
+        android:id="@+id/navHome"
+        android:orientation="vertical"
+        android:layout_width="70sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ivHome"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_home"
+            android:tint="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navPortfolio"
+        android:orientation="vertical"
+        android:layout_width="70sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ivPortfolio"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_portfolio"
+            android:tint="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvPortfolio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Portfolio"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/navTransaction"
+        android:orientation="vertical"
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ivTransaction"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_transaction"
+            android:tint="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvTransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navProfile"
+        android:orientation="vertical"
+        android:layout_width="70sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_profile"
+            android:tint="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/navExit"
+        android:orientation="vertical"
+        android:layout_width="70sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/ivExit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_exit"
+            android:tint="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>
