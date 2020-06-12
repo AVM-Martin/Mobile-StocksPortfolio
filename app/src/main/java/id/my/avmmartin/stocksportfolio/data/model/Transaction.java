@@ -131,39 +131,39 @@ public class Transaction {
 
     // setter
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private void setFkPortfolioId(int fkPortfolioId) {
+    public void setFkPortfolioId(int fkPortfolioId) {
         this.fkPortfolioId = fkPortfolioId;
     }
 
-    private void setFkStockId(String fkStockId) {
+    public void setFkStockId(String fkStockId) {
         this.fkStockId = fkStockId;
     }
 
-    private void setType(int type) {
+    public void setType(int type) {
         this.type = type;
     }
 
-    private void setTransactionDate(Calendar transactionDate) {
+    public void setTransactionDate(Calendar transactionDate) {
         this.transactionDate = transactionDate;
     }
 
-    private void setPrice(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    private void setLot(int lot) {
+    public void setLot(int lot) {
         this.lot = lot;
     }
 
-    private void setFee(int fee) {
+    public void setFee(int fee) {
         this.fee = fee;
     }
 
-    private void setTotal(int total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 }

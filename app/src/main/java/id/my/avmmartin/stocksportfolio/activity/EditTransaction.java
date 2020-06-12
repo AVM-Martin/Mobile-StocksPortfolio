@@ -54,6 +54,7 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
     EditText etShares;
     Button btnSubmit;
     Button btnCancel;
+    Transaction trx;
     int position;
     com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
@@ -90,7 +91,8 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         btnSubmit = findViewById(R.id.btnSubmit);
         btnCancel = findViewById(R.id.btnCancel);
         position = getIntent().getIntExtra("position",0);
-        spPortfolioName = (Spinner) findViewById(R.id.spPortfolioName);
+        spPortfolioName = findViewById(R.id.spPortfolioName);
+        trx = mainApp.getDataManager().getTransactionByPosition(position);
     }
 
     private void loadData() {
@@ -161,8 +163,20 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                         fee = mainApp.getDataManager().getBrokerById(brokerId).getSellFee();
                     }
                     int type = transactionType;
-                    Transaction trx = new Transaction(fkPortfolioId, fkStockId, type, transactionDate, price, lot, fee);
-                    mainApp.getDataManager().insertTransaction(trx);
+                    trx.setFkPortfolioId(fkPortfolioId);
+                    trx.setFkStockId(fkStockId);
+                    trx.setPrice(price);
+                    trx.setLot(lot);
+                    trx.setFee(fee);
+                    trx.setTransactionDate(transactionDate);
+                    trx.setType(type);
+                    if (type == Transaction.BUY) {
+                        trx.setTotal(lot * price + fee);
+                    } else {
+                        trx.setLot(-lot);
+                        trx.setTotal(-lot * price + fee);
+                    }
+                    mainApp.getDataManager().updateTransaction(trx);
                     Toast.makeText(EditTransaction.this, "Successfully Add Transaction", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -230,7 +244,6 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
     }
 
     private void fillData(){
-        Transaction trx = mainApp.getDataManager().getTransactionByPosition(position);
         atvStockID.setText(trx.getFkStockId());
         String companyName = mainApp.getDataManager().getStockById(trx.getFkStockId()).getName();
         tvCompanyNameValue.setText(companyName);
