@@ -16,7 +16,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="BrokerID">BrokerID</string>
-    <string name="portfolioid">PortfolioID</string>
+    <string name="portfolio_name">Portfolio Name</string>
 
     <string name="input_password">Input Password</string>
     <string name="confirm_password">Confirm Password</string>

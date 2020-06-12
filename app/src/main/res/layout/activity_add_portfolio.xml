@@ -88,7 +88,7 @@
         android:id="@+id/tvPortfolioName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/portfolioid"
+        android:text="@string/portfolio_name"
         android:textSize="20sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
