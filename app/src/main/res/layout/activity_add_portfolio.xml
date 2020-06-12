@@ -148,17 +148,11 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_alignParentBottom = "true"
+    <id.my.avmmartin.stocksportfolio.activity.components.CustomBottomNavigation
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/bottom_navbar_menu"
-        />
+        android:layout_alignParentBottom="true" />
 
 
 </RelativeLayout>

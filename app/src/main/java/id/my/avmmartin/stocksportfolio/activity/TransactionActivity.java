@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -69,42 +72,6 @@ public class TransactionActivity extends AppCompatActivity {
         adapter = new DataAdapter(mainApp);
         rvTransactions.setAdapter(adapter);
 
-
-        // Bottom Navigation View
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navTransaction);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(TransactionActivity.this,HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(TransactionActivity.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(TransactionActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -126,6 +93,13 @@ public class TransactionActivity extends AppCompatActivity {
         mainApp = (StocksPortfolio) getApplication();
 
         //imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
+
+        LinearLayout navTransaction = findViewById(R.id.navTransaction);
+        navTransaction.setClickable(false);
+        ImageView ivTransaction = findViewById(R.id.ivTransaction);
+        TextView tvTransaction = findViewById(R.id.tvTransaction);
+        ivTransaction.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvTransaction.setTextColor(getColor(R.color.colorPrimaryDark));
     }
 
     private void loadData() {

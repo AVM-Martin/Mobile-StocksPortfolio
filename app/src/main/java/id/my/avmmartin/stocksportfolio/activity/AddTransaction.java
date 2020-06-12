@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -50,18 +51,12 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
     Calendar calendar = Calendar.getInstance();
     Button btnSubmit;
     Button btnCancel;
-    com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
         mainApp = (StocksPortfolio) getApplication();
-
-        // Bottom Nav View
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navTransaction);
 
     }
 
@@ -83,6 +78,11 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
         btnCancel = findViewById(R.id.btnCancel);
 
         spPortfolioName = (Spinner) findViewById(R.id.spPortfolioName);
+
+        ImageView ivTransaction = findViewById(R.id.ivTransaction);
+        TextView tvTransaction = findViewById(R.id.tvTransaction);
+        ivTransaction.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvTransaction.setTextColor(getColor(R.color.colorPrimaryDark));
     }
 
     private void loadData() {
@@ -161,40 +161,7 @@ public class AddTransaction extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(AddTransaction.this,HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddTransaction.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(AddTransaction.this,TransactionActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(AddTransaction.this,ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
+
     }
 
 

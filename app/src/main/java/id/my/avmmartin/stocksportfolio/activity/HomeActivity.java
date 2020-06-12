@@ -2,23 +2,15 @@ package id.my.avmmartin.stocksportfolio.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.content.Intent;
-import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-
-import org.w3c.dom.ProcessingInstruction;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 
 public class HomeActivity extends AppCompatActivity {
@@ -33,41 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         Toast.makeText(this, String.valueOf(total_buy), Toast.LENGTH_LONG).show();
         //tvTotalBuyValue.setText(convertValueToString(total_buy));
-
-
-        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(HomeActivity.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(HomeActivity.this,TransactionActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -82,6 +39,14 @@ public class HomeActivity extends AppCompatActivity {
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
         tvTotalBuyValue = findViewById(R.id.tvTotalBuyValue);
+
+        LinearLayout navHome = findViewById(R.id.navHome);
+        navHome.setClickable(false);
+        ImageView ivHome = findViewById(R.id.ivHome);
+        TextView tvHome = findViewById(R.id.tvHome);
+        ivHome.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvHome.setTextColor(getColor(R.color.colorPrimaryDark));
+
     }
 
     private void loadData() {

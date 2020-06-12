@@ -12,7 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -34,8 +37,6 @@ public class ListPortfolioActivity extends AppCompatActivity {
     private TransactionListAdapter transactionListAdapter;
 
     private int portfolioId;
-
-    private com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +68,17 @@ public class ListPortfolioActivity extends AppCompatActivity {
         spPortfolio = findViewById(R.id.spPortfolio);
         rvTransaction = findViewById(R.id.rvTransactions);
         imgBtnAdd = findViewById(R.id.imgBtnAdd);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         portfolioSpinnerAdapter = new PortfolioSpinnerAdapter(mainApp, this);
         transactionListAdapter = new TransactionListAdapter(mainApp);
+
+
+        LinearLayout navPortfolio = findViewById(R.id.navPortfolio);
+        navPortfolio.setClickable(false);
+        ImageView ivPortfolio = findViewById(R.id.ivPortfolio);
+        TextView tvPortfolio = findViewById(R.id.tvPortfolio);
+        ivPortfolio.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvPortfolio.setTextColor(getColor(R.color.colorPrimaryDark));
     }
 
     private void loadData() {
@@ -102,45 +110,6 @@ public class ListPortfolioActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListPortfolioActivity.this, AddPortfolio.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-            }
-        });
-
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(ListPortfolioActivity.this,HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(ListPortfolioActivity.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(ListPortfolioActivity.this,TransactionActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(ListPortfolioActivity.this,ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    Intent intent = new Intent(ListPortfolioActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                return false;
             }
         });
 
