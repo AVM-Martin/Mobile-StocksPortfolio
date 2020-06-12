@@ -2,27 +2,19 @@ package id.my.avmmartin.stocksportfolio.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 
 public class TransactionActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -57,44 +49,6 @@ public class TransactionActivity extends AppCompatActivity {
         adapter = new DataAdapter(this,mainApp);
         rvTransactions.setAdapter(adapter);
 
-
-        // Bottom Navigation View
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navTransaction);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(TransactionActivity.this,HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(TransactionActivity.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(TransactionActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    Intent intent = new Intent(TransactionActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -114,6 +68,15 @@ public class TransactionActivity extends AppCompatActivity {
 
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
+
+        //imgBtnDeleteTransaction = findViewById(R.id.imgBtnDeleteTransaction);
+
+        LinearLayout navTransaction = findViewById(R.id.navTransaction);
+        navTransaction.setClickable(false);
+        ImageView ivTransaction = findViewById(R.id.ivTransaction);
+        TextView tvTransaction = findViewById(R.id.tvTransaction);
+        ivTransaction.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvTransaction.setTextColor(getColor(R.color.colorPrimaryDark));
     }
 
     private void loadData() {
@@ -123,5 +86,4 @@ public class TransactionActivity extends AppCompatActivity {
     private void setEvents() {
         // none
     }
-
 }

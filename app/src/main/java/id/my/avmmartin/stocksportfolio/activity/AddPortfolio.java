@@ -1,28 +1,19 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.BaseAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,8 +21,6 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.DatabaseManager;
-import id.my.avmmartin.stocksportfolio.data.model.Broker;
 import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
@@ -52,45 +41,7 @@ public class AddPortfolio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_portfolio);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
-        bottomNavigationView.setSelectedItemId(R.id.navPortfolio);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.navHome){
-                    Intent intent = new Intent(AddPortfolio.this,HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navPortfolio){
-                    Intent intent = new Intent(AddPortfolio.this,ListPortfolioActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navTransaction){
-                    Intent intent = new Intent(AddPortfolio.this,TransactionActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navProfile) {
-                    Intent intent = new Intent(AddPortfolio.this,ProfileActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                else if(item.getItemId() == R.id.navExit){
-                    Intent intent = new Intent(AddPortfolio.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                return false;
-            }
-        });
+
     }
 
     @Override
@@ -112,6 +63,11 @@ public class AddPortfolio extends AppCompatActivity {
         tvCreatedDate = findViewById(R.id.tvCreatedDate);
         ivAdd = findViewById(R.id.ivAdd);
         ivCancel = findViewById(R.id.ivCancel);
+
+        ImageView ivPortfolio = findViewById(R.id.ivPortfolio);
+        TextView tvPortfolio = findViewById(R.id.tvPortfolio);
+        ivPortfolio.setColorFilter(getColor(R.color.colorPrimaryDark));
+        tvPortfolio.setTextColor(getColor(R.color.colorPrimaryDark));
     }
 
     private void loadData() {
