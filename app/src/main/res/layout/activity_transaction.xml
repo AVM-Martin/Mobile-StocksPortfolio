@@ -21,101 +21,42 @@
 
     <RelativeLayout
         android:id="@+id/containerTransaction"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/tvTransaction">
         <RelativeLayout
             android:id="@+id/layoutAddTransaction"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="20dp"
             >
 
             <ImageButton
                 android:id="@+id/imgBtnAddTransaction"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:background="@drawable/icon_add"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_centerHorizontal="true"
+                android:maxWidth="20dp"
+                android:maxHeight="20dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
                 />
             <TextView
                 android:id="@+id/tvImgBtnAddTransaction"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="Add Transaction"
-                android:layout_below="@+id/imgBtnAddTransaction"
-                android:textAlignment="center"
-                android:textSize="9dp"
+                android:layout_toRightOf="@+id/imgBtnAddTransaction"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="2dp"
+                android:textSize="14dp"
+                android:textColor="@color/colorBlack"
                 />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/layoutEditTransaction"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_toRightOf="@id/layoutAddTransaction"
-            >
-            <ImageButton
-                android:id="@+id/imgBtnEditTransaction"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/icon_edit"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:id="@+id/tvImgBtnEditTransaction"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Transaction"
-                android:layout_below="@+id/imgBtnEditTransaction"
-                android:textAlignment="center"
-                android:textSize="9dp"
-                />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layoutDeleteTransaction"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="60dp"
-            android:layout_toRightOf="@id/layoutEditTransaction">
-
-            <ImageButton
-                android:id="@+id/imgBtnDeleteTransaction"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/icon_delete"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:id="@+id/tvImgBtnDeleteTransaction"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete Transaction"
-                android:layout_below="@+id/imgBtnDeleteTransaction"
-                android:textAlignment="center"
-                android:textSize="9dp"
-                />
-        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -138,7 +79,7 @@
             >
             <TextView
                 android:id="@+id/tvTrxNumber"
-                android:layout_width="30dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:textSize="11dp"
                 android:textStyle="bold"
@@ -149,10 +90,10 @@
                 />
             <TextView
                 android:id="@+id/tvTrxDate"
-                android:layout_width="60dp"
+                android:layout_width="65dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvTrxNumber"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -165,7 +106,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvTrxDate"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -177,7 +118,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvStockName"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -189,7 +130,7 @@
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvStockPrice"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -198,10 +139,10 @@
                 />
             <TextView
                 android:id="@+id/tvTrxType"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvStockLot"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
@@ -213,7 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/tvTrxType"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:textStyle="bold"
                 android:background="@drawable/border"
                 android:gravity="center"
