@@ -2,8 +2,6 @@ package id.my.avmmartin.stocksportfolio.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -11,20 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 
 public class TransactionActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -109,4 +99,5 @@ public class TransactionActivity extends AppCompatActivity {
     private void setEvents() {
         // none
     }
+
 }

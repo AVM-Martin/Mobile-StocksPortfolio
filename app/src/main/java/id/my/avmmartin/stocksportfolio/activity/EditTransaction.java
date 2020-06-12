@@ -2,6 +2,7 @@ package id.my.avmmartin.stocksportfolio.activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,8 +24,6 @@ import java.util.List;
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
-import id.my.avmmartin.stocksportfolio.data.model.Portfolio;
-import id.my.avmmartin.stocksportfolio.data.model.Stock;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 

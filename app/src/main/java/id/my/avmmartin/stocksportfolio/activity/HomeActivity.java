@@ -1,6 +1,5 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -76,51 +75,10 @@ public class HomeActivity extends AppCompatActivity {
             Transaction trx = mainApp.getDataManager().getTransactionByPosition(i);
             if(trx.getType() == Transaction.BUY){
                 total_buy += countTransaction(trx.getPrice(),trx.getLot(),trx.getFee(),trx.getType());
-                // For Debug Only
-                String temp = "Stock Name : ";
-                temp += trx.getFkStockId();
-                temp += " - Price : ";
-                temp += trx.getPrice();
-                temp += " - Lot : ";
-                temp += trx.getLot();
-                temp += " - Fee : 0.";
-                temp += trx.getFee();
-                temp += "%";
-                Toast.makeText(this, temp, Toast.LENGTH_SHORT).show();
             }
             else{
                 total_sell += countTransaction(trx.getPrice(),trx.getLot(),trx.getFee(),trx.getType());
             }
         }
-    }
-
-    private String convertValueToString(int value){
-        String str = "";
-        String result = "";
-        while(value > 0){
-            str += String.valueOf(value%10);
-            value /= 10;
-        }
-        int length = str.length();
-        Toast.makeText(this, String.valueOf(length), Toast.LENGTH_SHORT).show();
-        int cnt = 0;
-        for(int i=length-1;i>1;i--){
-            if(length-1 == 1){
-                result += "0";
-            }
-            else{
-                cnt+=1;
-                result += str.charAt(i);
-                if(cnt == 3){
-                    result += ".";
-                    cnt = 0;
-                }
-            }
-        }
-        result += ",";
-        for(int i=1;i>=0;i--){
-            result += str.charAt(i);
-        }
-        return result;
     }
 }
