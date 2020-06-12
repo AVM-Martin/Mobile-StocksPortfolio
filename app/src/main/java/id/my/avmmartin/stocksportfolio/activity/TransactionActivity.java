@@ -69,7 +69,7 @@ public class TransactionActivity extends AppCompatActivity {
         rvTransactions = findViewById(R.id.rvTransactions);
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rvTransactions.setLayoutManager(linearLayoutManager);
-        adapter = new DataAdapter(mainApp);
+        adapter = new DataAdapter(this, mainApp);
         rvTransactions.setAdapter(adapter);
 
     }

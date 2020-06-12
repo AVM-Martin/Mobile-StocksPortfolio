@@ -228,8 +228,8 @@
                 android:gravity="center_vertical"
                 />
 
-            <EditText
-                android:id="@+id/etPortfolioName"
+            <Spinner
+                android:id="@+id/spPortfolioName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvShares"

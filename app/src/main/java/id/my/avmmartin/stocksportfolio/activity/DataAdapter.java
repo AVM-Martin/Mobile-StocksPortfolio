@@ -1,5 +1,7 @@
 package id.my.avmmartin.stocksportfolio.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,11 @@ import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private StocksPortfolio mainApp;
+    Context ctx;
 
-    public DataAdapter(StocksPortfolio mainApp) {
+    public DataAdapter(Context ctx, StocksPortfolio mainApp) {
         this.mainApp = mainApp;
+        this.ctx = ctx;
     }
 
     @Override
@@ -45,7 +49,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return mainApp.getDataManager().transactionSize();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTrxNumber;
         TextView tvTrxDate;
         TextView tvStockName;
@@ -63,8 +68,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             tvStockLot = (TextView) itemView.findViewById(R.id.tvStockLot);
             tvTrxType = (TextView) itemView.findViewById(R.id.tvTrxType);
             tvTrxTotal = (TextView) itemView.findViewById(R.id.tvTrxTotal);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    Intent intent = new Intent(ctx,EditTransaction.class);
+                    intent.putExtra("id",position);
+                    ctx.startActivity(intent);
+                }
+            });
         }
-
-
     }
 }
