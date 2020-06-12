@@ -45,12 +45,16 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
     TextView tvCompanyNameValue;
     TextView tvTransactionDateValue;
     AutoCompleteTextView atvStockID;
+    RadioGroup rgTransaction;
     String item = "";
     int stockIndex;
     Spinner spPortfolioName;
     Calendar calendar = Calendar.getInstance();
+    EditText etPrice;
+    EditText etShares;
     Button btnSubmit;
     Button btnCancel;
+    int position;
     com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
     @Override
@@ -80,15 +84,19 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         tvTransactionDateValue = findViewById(R.id.tvTransactionDateValue);
         atvStockID = findViewById(R.id.atvStockID);
         tvCompanyNameValue = findViewById(R.id.tvCompanyNameValue);
+        rgTransaction = findViewById(R.id.rgTransaction);
+        etPrice = findViewById(R.id.etPrice);
+        etShares = findViewById(R.id.etShares);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnCancel = findViewById(R.id.btnCancel);
-
+        position = getIntent().getIntExtra("position",0);
         spPortfolioName = (Spinner) findViewById(R.id.spPortfolioName);
     }
 
     private void loadData() {
         showListStockID();
         showListPortfolio();
+        fillData();
     }
 
     private void setEvents() {
@@ -221,6 +229,23 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         datePickerDialog.show();
     }
 
+    private void fillData(){
+        Transaction trx = mainApp.getDataManager().getTransactionByPosition(position);
+        atvStockID.setText(trx.getFkStockId());
+        String companyName = mainApp.getDataManager().getStockById(trx.getFkStockId()).getName();
+        tvCompanyNameValue.setText(companyName);
+        if(trx.getType() == Transaction.BUY){
+            rgTransaction.check(R.id.rbBuyTransaction);
+            etShares.setText(String.valueOf(trx.getLot()));
+        }
+        else{
+            rgTransaction.check(R.id.rbSellTransaction);
+            etShares.setText(String.valueOf(trx.getLot()*(-1)));
+        }
+        etPrice.setText(String.valueOf(trx.getPrice()));
+        spPortfolioName.setSelection(trx.getFkPortfolioId());
+    }
+
     private void showListStockID() {
         listStockID.clear();
         int stockSize = mainApp.getDataManager().stockSize();
@@ -243,7 +268,6 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         portfolioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spPortfolioName.setAdapter(portfolioAdapter);
     }
-
 
 
     @Override

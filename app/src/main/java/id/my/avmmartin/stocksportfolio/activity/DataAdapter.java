@@ -63,6 +63,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder>{
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             tvTrxNumber = (TextView) itemView.findViewById(R.id.tvTrxNumber);
+//            tvTrxNumber.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    int position = getAdapterPosition();
+//                    Toast.makeText(ctx,String.valueOf(position),Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(ctx,EditTransaction.class);
+//                    intent.putExtra("position",position);
+//                    ctx.startActivity(intent);
+//                }
+//            });
             tvTrxDate = (TextView) itemView.findViewById(R.id.tvTrxDate);
             tvStockName = (TextView) itemView.findViewById(R.id.tvStockName);
             tvStockPrice = (TextView) itemView.findViewById(R.id.tvStockPrice);

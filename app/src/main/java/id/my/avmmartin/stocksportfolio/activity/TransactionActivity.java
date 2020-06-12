@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,8 +35,22 @@ public class TransactionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transaction);
         mainApp = (StocksPortfolio) getApplication();
         ImageButton imgBtnAddTransaction = findViewById(R.id.imgBtnAddTransaction);
+        TextView tvAddTransaction = findViewById(R.id.tvAddTransaction);
         //ImageButton imgBtnDeleteTransaction;
         imgBtnAddTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mainApp.getDataManager().portfolioSize() == 0){
+                    Toast.makeText(TransactionActivity.this, "Please Register Portfolio First", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(TransactionActivity.this, AddTransaction.class);
+                    startActivity(intent);
+                }
+
+            }
+        });
+        tvAddTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mainApp.getDataManager().portfolioSize() == 0){

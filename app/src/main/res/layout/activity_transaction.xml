@@ -32,7 +32,7 @@
 
         <RelativeLayout
             android:id="@+id/layoutAddTransaction"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
@@ -49,72 +49,19 @@
                 android:layout_alignParentLeft="true"
                 />
             <TextView
-                android:id="@+id/tvImgBtnAddTransaction"
+                android:id="@+id/tvAddTransaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="Add Transaction"
-                android:layout_below="@+id/imgBtnAddTransaction"
+                android:layout_toRightOf="@id/imgBtnAddTransaction"
+                android:layout_centerVertical="true"
                 android:textAlignment="center"
-                android:textSize="9dp"
+                android:textSize="16dp"
                 />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/layoutEditTransaction"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            >
-            <ImageButton
-                android:id="@+id/imgBtnEditTransaction"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/icon_edit"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:id="@+id/tvImgBtnEditTransaction"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit Transaction"
-                android:layout_below="@+id/imgBtnEditTransaction"
-                android:textAlignment="center"
-                android:textSize="9dp"
-                />
-        </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/layoutDeleteTransaction"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            >
-
-            <ImageButton
-                android:id="@+id/imgBtnDeleteTransaction"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/icon_delete"
-                android:maxWidth="10dp"
-                android:maxHeight="10dp"
-                android:layout_centerHorizontal="true"
-                />
-            <TextView
-                android:id="@+id/tvImgBtnDeleteTransaction"
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete Transaction"
-                android:layout_below="@+id/imgBtnDeleteTransaction"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="9dp"
-                />
-        </RelativeLayout>
 
     </RelativeLayout>
 
