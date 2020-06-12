@@ -214,7 +214,7 @@
                 android:id="@+id/tvShareNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(1 lot = 100 shares)"
+                android:text="lot(s)"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"

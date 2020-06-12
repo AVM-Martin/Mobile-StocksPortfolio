@@ -47,7 +47,6 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
     Button btnCancel;
     Transaction trx;
     int position;
-    com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +73,7 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
         etShares = findViewById(R.id.etShares);
         btnSubmit = findViewById(R.id.btnSubmit);
         btnCancel = findViewById(R.id.btnCancel);
-        position = getIntent().getIntExtra("position",0);
+        position = getIntent().getIntExtra("id",0);
         spPortfolioName = findViewById(R.id.spPortfolioName);
         trx = mainApp.getDataManager().getTransactionByPosition(position);
     }
@@ -202,8 +201,12 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
             rgTransaction.check(R.id.rbSellTransaction);
             etShares.setText(String.valueOf(trx.getLot()*(-1)));
         }
+
+        calendar.setTimeInMillis(trx.getTransactionDate().getTimeInMillis());
+        tvTransactionDateValue.setText(CommonUtils.toDateFormat(calendar));
+
         etPrice.setText(String.valueOf(trx.getPrice()));
-        spPortfolioName.setSelection(trx.getFkPortfolioId());
+        spPortfolioName.setSelection(trx.getFkPortfolioId() - 1); // zero-based indexing baby
     }
 
     private void showListStockID() {

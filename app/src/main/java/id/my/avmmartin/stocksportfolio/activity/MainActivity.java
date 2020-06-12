@@ -49,10 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoginDialog.Liste
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(mainApp.getDataManager().isRegistered()) {
-                    onClickLogin();
-                }
-                else {
+                if(!mainApp.getDataManager().isRegistered()) {
                     Intent intent = new Intent(MainActivity.this, Register.class);
                     startActivity(intent);
                 }

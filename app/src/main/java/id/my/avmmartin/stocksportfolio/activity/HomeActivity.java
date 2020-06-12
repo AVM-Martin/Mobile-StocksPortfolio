@@ -23,8 +23,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toast.makeText(this, String.valueOf(total_buy), Toast.LENGTH_LONG).show();
-        //tvTotalBuyValue.setText(convertValueToString(total_buy));
     }
 
     @Override
@@ -46,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
         TextView tvHome = findViewById(R.id.tvHome);
         ivHome.setColorFilter(getColor(R.color.colorPrimaryDark));
         tvHome.setTextColor(getColor(R.color.colorPrimaryDark));
-
     }
 
     private void loadData() {
