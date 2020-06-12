@@ -127,9 +127,13 @@ public class DataManager {
     }
 
     public TransactionSummary getTransactionSummaryByPortfolioByPosition(int portfolioId, int position) {
-        return databaseManager
+        TransactionSummary transactionSummary = databaseManager
             .getTransactionSummaryManager()
             .getByPortfolioByPosition(portfolioId, position);
+
+        transactionSummary.setCurrentPrice(getStockPrice(transactionSummary.getFkStockId()));
+
+        return transactionSummary;
     }
 
     // stock price
@@ -138,7 +142,7 @@ public class DataManager {
         volleyManager.getStockPriceManager().reloadOnlineData(loaderUtils, stockId);
     }
 
-    public int getStockPrice(String stockId) {
+    private int getStockPrice(String stockId) {
         if (volleyManager.getStockPriceManager().getPrice(stockId) == null) {
             return 0;
         } else {
