@@ -100,7 +100,7 @@ public class DataManager {
             .getByPortfolioByStock(transaction.getFkPortfolioId(), transaction.getFkStockId());
 
         transactionSummary.insertTransaction(transaction);
-        databaseManager.getTransactionSummaryManager().update(transactionSummary);
+        databaseManager.getTransactionSummaryManager().insertOrUpdate(transactionSummary);
     }
 
     public Transaction getTransactionById(int id) {

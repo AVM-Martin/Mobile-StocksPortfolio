@@ -17,6 +17,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
             + StockManager.VERSION
             + PortfolioManager.VERSION
             + TransactionManager.VERSION
+            + TransactionSummaryManager.VERSION
     );
 
     private BrokerManager brokerManager;

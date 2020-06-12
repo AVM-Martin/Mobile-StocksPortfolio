@@ -3,6 +3,7 @@ package id.my.avmmartin.stocksportfolio.data.manager;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import id.my.avmmartin.stocksportfolio.data.model.TransactionSummary;
@@ -20,7 +21,7 @@ public class TransactionSummaryManager {
     public int sizeByPortfolio(int portfolioId) {
         String selection = (
             FK_PORTFOLIO_ID + " = ?"
-                + LOT + " > 0"
+                + "AND " + LOT + " > 0"
         );
         String[] selectionArgs = {
             Integer.toString(portfolioId)
@@ -31,14 +32,27 @@ public class TransactionSummaryManager {
 
     // create read update
 
-    public void insert(TransactionSummary transactionSummary) {
-        db.insert(TABLE_NAME, null, transactionSummary.toContentValues());
+    public void insertOrUpdate(TransactionSummary transactionSummary) {
+        String whereClause = (
+            FK_PORTFOLIO_ID + " = ? "
+                + "AND " + FK_STOCK_ID + " = ?"
+        );
+        String[] whereArgs = {
+            Integer.toString(transactionSummary.getFkPortfolioId()),
+            transactionSummary.getFkStockId()
+        };
+
+        try {
+            db.insertOrThrow(TABLE_NAME, null, transactionSummary.toContentValues());
+        } catch (SQLiteConstraintException e) {
+            db.update(TABLE_NAME, transactionSummary.toContentValues(), whereClause, whereArgs);
+        }
     }
 
     public TransactionSummary getByPortfolioByStock(int portfolioId, String stockId) {
         String selection = (
             FK_PORTFOLIO_ID + " = ? "
-                + FK_STOCK_ID + " = ?"
+                + "AND " + FK_STOCK_ID + " = ?"
         );
         String[] selectionArgs = {
             Integer.toString(portfolioId),
@@ -56,7 +70,7 @@ public class TransactionSummaryManager {
     public TransactionSummary getByPortfolioByPosition(int portfolioId, int position) {
         String selection = (
             FK_PORTFOLIO_ID + " = ? "
-                + LOT + " > 0"
+                + "AND " + LOT + " > 0"
         );
         String[] selectionArgs = {
             Integer.toString(portfolioId)
@@ -66,19 +80,6 @@ public class TransactionSummaryManager {
             cursor.moveToPosition(position);
             return new TransactionSummary(cursor);
         }
-    }
-
-    public void update(TransactionSummary transactionSummary) {
-        String whereClause = (
-            FK_PORTFOLIO_ID + " = ? "
-                + FK_STOCK_ID + " = ?"
-        );
-        String[] whereArgs = {
-            Integer.toString(transactionSummary.getFkPortfolioId()),
-            transactionSummary.getFkStockId()
-        };
-
-        db.update(TABLE_NAME, transactionSummary.toContentValues(), whereClause, whereArgs);
     }
 
     // overridden method
