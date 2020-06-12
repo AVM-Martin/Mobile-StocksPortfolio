@@ -164,7 +164,7 @@ public class AddPortfolio extends AppCompatActivity {
 
                 mainApp.getDataManager().insertPortfolio(portfolio);
 
-                Intent intent = new Intent(AddPortfolio.this, PortfolioActivity.class);
+                Intent intent = new Intent(AddPortfolio.this, ListPortfolioActivity.class);
                 startActivity(intent);
 
                 Toast.makeText(AddPortfolio.this, "Successful", Toast.LENGTH_SHORT).show();
