@@ -21,6 +21,7 @@ import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.activity.components.PortfolioSpinnerAdapter;
 import id.my.avmmartin.stocksportfolio.activity.components.TransactionListAdapter;
+import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
 public class ListPortfolioActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -31,6 +32,8 @@ public class ListPortfolioActivity extends AppCompatActivity {
 
     private PortfolioSpinnerAdapter portfolioSpinnerAdapter;
     private TransactionListAdapter transactionListAdapter;
+
+    private int portfolioId;
 
     private com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView;
 
@@ -53,6 +56,7 @@ public class ListPortfolioActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        loadOnlineData();
         portfolioSpinnerAdapter.notifyDataSetChanged();
         transactionListAdapter.notifyDataSetChanged();
     }
@@ -80,9 +84,9 @@ public class ListPortfolioActivity extends AppCompatActivity {
         spPortfolio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                transactionListAdapter.setPortfolioId(
-                    mainApp.getDataManager().getPortfolioByPosition(position).getId()
-                );
+                portfolioId = mainApp.getDataManager().getPortfolioByPosition(position).getId();
+                transactionListAdapter.setPortfolioId(portfolioId);
+                loadOnlineData();
                 transactionListAdapter.notifyDataSetChanged();
             }
 
@@ -140,5 +144,26 @@ public class ListPortfolioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void loadOnlineData() {
+        OnlineDataLoaderUtils loaderUtils = new OnlineDataLoaderUtils(this) {
+            @Override
+            public void onPostExecute() {
+                super.onPostExecute();
+                transactionListAdapter.notifyDataSetChanged();
+            }
+        };
+
+        int size = mainApp.getDataManager().transactionSummarySizeByPortfolio(portfolioId);
+        for (int i=0; i<size; i++) {
+            mainApp.getDataManager().reloadOnlineStockPrice(
+                loaderUtils,
+                mainApp
+                    .getDataManager()
+                    .getTransactionSummaryByPortfolioByPosition(portfolioId, i)
+                    .getFkStockId()
+            );
+        }
     }
 }
