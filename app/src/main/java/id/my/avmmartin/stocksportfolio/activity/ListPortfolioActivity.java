@@ -66,7 +66,7 @@ public class ListPortfolioActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         portfolioSpinnerAdapter = new PortfolioSpinnerAdapter(mainApp, this);
-        transactionListAdapter = new TransactionListAdapter(mainApp, this);
+        transactionListAdapter = new TransactionListAdapter(mainApp);
     }
 
     private void loadData() {

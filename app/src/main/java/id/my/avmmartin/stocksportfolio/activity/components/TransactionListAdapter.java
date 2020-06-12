@@ -1,6 +1,5 @@
 package id.my.avmmartin.stocksportfolio.activity.components;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 
 public class TransactionListAdapter extends RecyclerView.Adapter<TransactionListViewHolder> {
     private StocksPortfolio mainApp;
-    private Activity activity;
     private int portfolioId;
 
     // overridden method
@@ -22,7 +20,7 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
     @Override
     public TransactionListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater
-            .from(activity)
+            .from(parent.getContext())
             .inflate(R.layout.single_transaction_list, parent, false);
 
         return new TransactionListViewHolder(v);
@@ -40,9 +38,8 @@ public class TransactionListAdapter extends RecyclerView.Adapter<TransactionList
 
     // constructor
 
-    public TransactionListAdapter(StocksPortfolio mainApp, Activity activity) {
+    public TransactionListAdapter(StocksPortfolio mainApp) {
         this.mainApp = mainApp;
-        this.activity = activity;
     }
 
     // setter
