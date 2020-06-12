@@ -95,10 +95,10 @@ public class HomeActivity extends AppCompatActivity {
     private int countTransaction(int stockPrice, int stockLot, int transactionFee, int transactionType){
         int total = 0;
         if(transactionType == Transaction.BUY){
-            total = stockPrice * stockLot * (10000 + transactionFee);
+            total = stockPrice * stockLot * (10000 );
         }
         else{
-            total = stockPrice * stockLot * (10000 - transactionFee);
+            total = stockPrice * stockLot * (10000);
         }
         return total;
     }
