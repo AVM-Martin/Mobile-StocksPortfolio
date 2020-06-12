@@ -38,7 +38,7 @@ public class TransactionListViewHolder extends RecyclerView.ViewHolder {
     private void loadData() {
         tvTransactionItem.setText(transactionSummary.getFkStockId());
         tvTransactionAvg.setText(String.format("%.2f", transactionSummary.getAvgPrice()));
-        tvTransactionLast.setText("0");
+        tvTransactionLast.setText(String.valueOf(transactionSummary.getCurrentPrice()));
         tvTransactionLot.setText(String.valueOf(transactionSummary.getLot()));
     }
 
