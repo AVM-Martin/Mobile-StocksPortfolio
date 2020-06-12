@@ -47,6 +47,7 @@ public class StockPriceManager extends HashMap<String, Integer> {
                     } catch (JSONException e) {
                         //
                     } finally {
+                        requestQueue.getCache().clear();
                         loaderUtils.onSuccessExecute();
                     }
 
