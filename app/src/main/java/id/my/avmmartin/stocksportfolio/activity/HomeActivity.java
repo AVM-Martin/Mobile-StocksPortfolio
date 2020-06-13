@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
 import id.my.avmmartin.stocksportfolio.data.model.TransactionSummary;
 import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
-import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
 public class HomeActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
@@ -59,12 +56,8 @@ public class HomeActivity extends AppCompatActivity {
     private void loadData() {
         totalBuyValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.BUY);
         totalSellValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.SELL);
+
         totalCurrentValue = 0;
-
-        tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue));
-        tvTotalSellValue.setText(CommonUtils.separator_comma(totalSellValue));
-        tvTotalProfitValue.setText(CommonUtils.separator_comma(totalCurrentValue));
-
         int size = mainApp.getDataManager().transactionSummarySize();
         for (int i=0; i<size; i++) {
             TransactionSummary summary = mainApp
@@ -72,8 +65,13 @@ public class HomeActivity extends AppCompatActivity {
                 .getTransactionSummaryByPosition(i);
 
             totalCurrentValue += summary.getLot() * summary.getAvgPrice();
-            tvTotalProfitValue.setText(CommonUtils.separator_comma(totalCurrentValue));
         }
+
+        tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue * 10000));
+        tvTotalSellValue.setText(CommonUtils.separator_comma(totalSellValue * 10000));
+        tvTotalProfitValue.setText(CommonUtils.separator_comma(
+            (totalSellValue - totalBuyValue + totalCurrentValue) * 10000
+        ));
     }
 
     private void setEvents() {
