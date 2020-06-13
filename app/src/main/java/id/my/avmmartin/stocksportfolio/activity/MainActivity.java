@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity implements LoginDialog.Liste
             }
             else {
                 Toast.makeText(MainActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
             }
+
+            dialog.dismiss();
 
         } catch(GeneralException e) {
 
