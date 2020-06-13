@@ -1,6 +1,7 @@
 package id.my.avmmartin.stocksportfolio.data.manager;
 
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -36,6 +37,8 @@ public class BrokerManager {
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
             cursor.moveToFirst();
             return new Broker(cursor);
+        } catch (CursorIndexOutOfBoundsException e) {
+            return null;
         }
     }
 
