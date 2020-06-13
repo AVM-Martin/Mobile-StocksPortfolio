@@ -42,11 +42,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         if(transaction.getType() == Transaction.BUY) {
             holder.tvStockLot.setText(CommonUtils.separator(transaction.getLot()));
             holder.tvTrxType.setText("B");
-            holder.tvTrxTotal.setText(CommonUtils.separator(-transaction.getTotal() * 100));
+            holder.tvTrxTotal.setText(CommonUtils.separator(-transaction.getTotal()));
         }  else {
             holder.tvStockLot.setText(CommonUtils.separator(-transaction.getLot()));
             holder.tvTrxType.setText("S");
-            holder.tvTrxTotal.setText(CommonUtils.separator(transaction.getTotal() * 100));
+            holder.tvTrxTotal.setText(CommonUtils.separator(transaction.getTotal()));
         }
     }
 

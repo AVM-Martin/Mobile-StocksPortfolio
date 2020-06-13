@@ -64,13 +64,13 @@ public class HomeActivity extends AppCompatActivity {
                 .getDataManager()
                 .getTransactionSummaryByPosition(i);
 
-            totalCurrentValue += (long) (summary.getLot() * summary.getAvgPrice());
+            totalCurrentValue += (long) summary.getLot() * 100 * summary.getAvgPrice();
         }
 
-        tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue * 10000));
-        tvTotalSellValue.setText(CommonUtils.separator_comma(totalSellValue * 10000));
+        tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue * 100));
+        tvTotalSellValue.setText(CommonUtils.separator_comma(totalSellValue * 100));
         tvTotalProfitValue.setText(CommonUtils.separator_comma(
-            (totalSellValue - totalBuyValue + totalCurrentValue) * 10000
+            (totalSellValue - totalBuyValue + totalCurrentValue) * 100
         ));
     }
 

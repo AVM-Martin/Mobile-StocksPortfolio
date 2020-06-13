@@ -32,11 +32,7 @@ public class Transaction {
     private int total;
 
     public void generateTotal() {
-        if (type == BUY) {
-            setTotal(-lot * 100 * price - fee);
-        } else {
-            setTotal(lot * 100 * price - fee);
-        }
+        setTotal(-lot * 100 * price - fee);
     }
 
     // database-related method
