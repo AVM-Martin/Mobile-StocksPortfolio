@@ -26,7 +26,7 @@ public class CommonUtils {
 
     public static String separator_comma(long nominal){
         if (nominal == 0) {
-            return "0,00";
+            return "0.00";
         }
 
         String temp = "";
@@ -42,12 +42,12 @@ public class CommonUtils {
             nominal /= 10;
             cnt += 1;
             if(!decimal && cnt == 2){
-                temp += ',';
+                temp += '.';
                 decimal = true;
                 cnt = 0;
             }
             else if(cnt == 3 && nominal>0){
-                temp += '.';
+                temp += ',';
                 cnt = 0;
             }
         }
@@ -74,7 +74,7 @@ public class CommonUtils {
             nominal /= 10;
             cnt += 1;
             if(cnt == 3 && nominal>0){
-                temp += '.';
+                temp += ',';
                 cnt = 0;
             }
         }
