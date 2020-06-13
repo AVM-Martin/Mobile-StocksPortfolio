@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
@@ -97,6 +98,11 @@ public class AddPortfolio extends AppCompatActivity {
                     return;
                 }
 
+                if(mainApp.getDataManager().getBrokerById(txtBrokerID) == null) {
+                    Toast.makeText(AddPortfolio.this, "Not a valid BrokerID", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(txtBuyFee.isEmpty()) {
                     Toast.makeText(AddPortfolio.this, "Buy Fee must be filled", Toast.LENGTH_SHORT).show();
                     return;
@@ -173,4 +179,5 @@ public class AddPortfolio extends AppCompatActivity {
         brokerAdapter = new ArrayAdapter<>(AddPortfolio.this, android.R.layout.simple_list_item_1, listBrokerID);
         atvBrokerID.setAdapter(brokerAdapter);
     }
+
 }

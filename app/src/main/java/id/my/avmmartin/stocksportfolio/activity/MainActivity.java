@@ -46,15 +46,6 @@ public class MainActivity extends AppCompatActivity implements LoginDialog.Liste
     }
 
     private void setEvents() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(!mainApp.getDataManager().isRegistered()) {
-                    Intent intent = new Intent(MainActivity.this, Register.class);
-                    startActivity(intent);
-                }
-            }
-        }, 2000);
 
         tvStockPortfolio.setOnClickListener(new View.OnClickListener() {
             @Override
