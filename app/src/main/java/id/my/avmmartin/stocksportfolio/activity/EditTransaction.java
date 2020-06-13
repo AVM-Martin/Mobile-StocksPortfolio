@@ -137,14 +137,15 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                     String fkStockId = item;
                     Calendar transactionDate = calendar;
                     int price = Integer.valueOf(etPrice.getText().toString());
-                    String brokerId = mainApp.getDataManager().getPortfolioByPosition(portfolioPosition).getFkBrokerId();
                     int lot = Integer.valueOf(etShares.getText().toString());
                     int transactionType = Transaction.BUY;
-                    int fee = mainApp.getDataManager().getBrokerById(brokerId).getBuyFee();
+                    int fee = mainApp.getDataManager().getPortfolioByPosition(portfolioPosition).getBuyFee();
                     if(rbTransaction.getText().equals("Sell")){
                         transactionType = Transaction.SELL;
-                        fee = mainApp.getDataManager().getBrokerById(brokerId).getSellFee();
+                        fee = mainApp.getDataManager().getPortfolioByPosition(portfolioPosition).getSellFee();
                     }
+                    fee *= lot * price;
+                    fee /= 100;
                     int type = transactionType;
                     trx.setFkPortfolioId(fkPortfolioId);
                     trx.setFkStockId(fkStockId);
@@ -159,6 +160,7 @@ public class EditTransaction extends AppCompatActivity implements AdapterView.On
                         trx.setLot(-lot);
                         trx.setTotal(-lot * price + fee);
                     }
+                    trx.generateTotal();
                     mainApp.getDataManager().updateTransaction(trx);
                     Toast.makeText(EditTransaction.this, "Successfully Add Transaction", Toast.LENGTH_SHORT).show();
                     finish();
