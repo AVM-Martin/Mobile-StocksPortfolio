@@ -20,9 +20,9 @@ public class HomeActivity extends AppCompatActivity {
     private TextView tvTotalSellValue;
     private TextView tvTotalProfitValue;
 
-    private int totalBuyValue;
-    private int totalSellValue;
-    private int totalCurrentValue;
+    private long totalBuyValue;
+    private long totalSellValue;
+    private long totalCurrentValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
                 .getDataManager()
                 .getTransactionSummaryByPosition(i);
 
-            totalCurrentValue += summary.getLot() * summary.getAvgPrice();
+            totalCurrentValue += (long) (summary.getLot() * summary.getAvgPrice());
         }
 
         tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue * 10000));
