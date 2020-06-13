@@ -25,6 +25,10 @@ public class CommonUtils {
     }
 
     public static String separator_comma(long nominal){
+        if (nominal == 0) {
+            return "0,00";
+        }
+
         String temp = "";
         String res = "";
         boolean decimal = false;
@@ -50,6 +54,10 @@ public class CommonUtils {
     }
 
     public static String separator(int nominal){
+        if (nominal == 0) {
+            return "0";
+        }
+
         String temp = "";
         String res = "";
         int cnt = 0;
