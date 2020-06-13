@@ -33,10 +33,8 @@ public class Transaction {
 
     public void generateTotal() {
         if (type == BUY) {
-            setLot(lot);
             setTotal(-lot * 100 * price - fee);
         } else {
-            setLot(-lot);
             setTotal(lot * 100 * price - fee);
         }
     }
@@ -90,6 +88,11 @@ public class Transaction {
         setType(type);
         setTransactionDate(transactionDate);
         setPrice(price);
+        if (type == BUY) {
+            setLot(lot);
+        } else {
+            setLot(-lot);
+        }
         setFee(fee);
         generateTotal();
     }

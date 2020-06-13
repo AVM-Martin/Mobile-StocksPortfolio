@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        totalBuyValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.BUY);
+        totalBuyValue = -mainApp.getDataManager().getTransactionTotalByType(Transaction.BUY);
         totalSellValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.SELL);
 
         totalCurrentValue = 0;
