@@ -31,6 +31,16 @@ public class Transaction {
     private int fee;
     private int total;
 
+    public void generateTotal() {
+        if (type == BUY) {
+            setLot(lot);
+            setTotal(-lot * 100 * price - fee);
+        } else {
+            setLot(-lot);
+            setTotal(lot * 100 * price - fee);
+        }
+    }
+
     // database-related method
 
     public Transaction(Cursor cursor) {
@@ -81,14 +91,7 @@ public class Transaction {
         setTransactionDate(transactionDate);
         setPrice(price);
         setFee(fee);
-
-        if (type == BUY) {
-            setLot(lot);
-            setTotal(-lot * price - fee);
-        } else {
-            setLot(-lot);
-            setTotal(lot * price - fee);
-        }
+        generateTotal();
     }
 
     // getter

@@ -117,7 +117,7 @@ public class DataManager {
 
     public void updateTransaction(Transaction transaction) {
         databaseManager.getTransactionManager().update(transaction);
-        // TODO: update the summary
+        // TODO: update the summary (will not be implemented here because of confidentiality)
     }
 
     public int getTransactionTotalByType(int type) {
