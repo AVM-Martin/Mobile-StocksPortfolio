@@ -38,10 +38,17 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         holder.tvTrxDate.setText(CommonUtils.toDateFormat(transaction.getTransactionDate()));
         holder.tvStockName.setText(transaction.getFkStockId());
         holder.tvStockPrice.setText(CommonUtils.separator(transaction.getPrice()));
-        holder.tvStockLot.setText(CommonUtils.separator(transaction.getLot()));
-        if(transaction.getType() == Transaction.BUY)holder.tvTrxType.setText("B");
-        else holder.tvTrxType.setText("S");
+        if(transaction.getType() == Transaction.BUY) {
+            holder.tvStockLot.setText(CommonUtils.separator(transaction.getLot()));
+            holder.tvTrxType.setText("B");
+        } else {
+            holder.tvStockLot.setText(CommonUtils.separator(-transaction.getLot()));
+            holder.tvTrxType.setText("S");
+        }
         long result = (long)transaction.getTotal() * 10000;
+        if (result < 0) {
+            result *= -1;
+        }
         holder.tvTrxTotal.setText(CommonUtils.separator_comma(result));
     }
 

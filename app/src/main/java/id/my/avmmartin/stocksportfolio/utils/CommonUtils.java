@@ -33,6 +33,10 @@ public class CommonUtils {
         String res = "";
         boolean decimal = false;
         int cnt = 0;
+        if(nominal < 0) {
+            nominal *= -1;
+            res += "-";
+        }
         while(nominal > 0){
             temp += String.valueOf(nominal%10);
             nominal /= 10;
@@ -61,7 +65,10 @@ public class CommonUtils {
         String temp = "";
         String res = "";
         int cnt = 0;
-        if(nominal < 0)nominal *= -1;
+        if(nominal < 0) {
+            nominal *= -1;
+            res += "-";
+        }
         while(nominal > 0){
             temp += String.valueOf(nominal%10);
             nominal /= 10;
