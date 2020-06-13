@@ -12,12 +12,20 @@ import android.widget.Toast;
 import id.my.avmmartin.stocksportfolio.R;
 import id.my.avmmartin.stocksportfolio.StocksPortfolio;
 import id.my.avmmartin.stocksportfolio.data.model.Transaction;
+import id.my.avmmartin.stocksportfolio.data.model.TransactionSummary;
+import id.my.avmmartin.stocksportfolio.utils.CommonUtils;
+import id.my.avmmartin.stocksportfolio.utils.OnlineDataLoaderUtils;
 
 public class HomeActivity extends AppCompatActivity {
     private StocksPortfolio mainApp;
-    int total_buy = 0;
-    int total_sell = 0;
-    TextView tvTotalBuyValue;
+
+    private TextView tvTotalBuyValue;
+    private TextView tvTotalSellValue;
+    private TextView tvTotalProfitValue;
+
+    private int totalBuyValue;
+    private int totalSellValue;
+    private int totalCurrentValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,8 @@ public class HomeActivity extends AppCompatActivity {
     private void initComponents() {
         mainApp = (StocksPortfolio) getApplication();
         tvTotalBuyValue = findViewById(R.id.tvTotalBuyValue);
+        tvTotalSellValue = findViewById(R.id.tvTotalSellValue);
+        tvTotalProfitValue = findViewById(R.id.tvTotalProfitValue);
 
         LinearLayout navHome = findViewById(R.id.navHome);
         navHome.setClickable(false);
@@ -47,35 +57,26 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        getTotalTransaction();
+        totalBuyValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.BUY);
+        totalSellValue = mainApp.getDataManager().getTransactionTotalByType(Transaction.SELL);
+        totalCurrentValue = 0;
+
+        tvTotalBuyValue.setText(CommonUtils.separator_comma(totalBuyValue));
+        tvTotalSellValue.setText(CommonUtils.separator_comma(totalSellValue));
+        tvTotalProfitValue.setText(CommonUtils.separator_comma(totalCurrentValue));
+
+        int size = mainApp.getDataManager().transactionSummarySize();
+        for (int i=0; i<size; i++) {
+            TransactionSummary summary = mainApp
+                .getDataManager()
+                .getTransactionSummaryByPosition(i);
+
+            totalCurrentValue += summary.getLot() * summary.getCurrentPrice();
+            tvTotalProfitValue.setText(CommonUtils.separator_comma(totalCurrentValue));
+        }
     }
 
     private void setEvents() {
         // none
-    }
-
-    private int countTransaction(int stockPrice, int stockLot, int transactionFee, int transactionType){
-        int total = 0;
-        if(transactionType == Transaction.BUY){
-            total = stockPrice * stockLot * (10000 );
-        }
-        else{
-            total = stockPrice * stockLot * (10000);
-        }
-        return total;
-    }
-
-    private void getTotalTransaction() {
-        int transactionSize = mainApp.getDataManager().transactionSize();
-        //Toast.makeText(this, String.valueOf(transactionSize), Toast.LENGTH_SHORT).show();
-        for(int i=0; i<transactionSize; i++) {
-            Transaction trx = mainApp.getDataManager().getTransactionByPosition(i);
-            if(trx.getType() == Transaction.BUY){
-                total_buy += countTransaction(trx.getPrice(),trx.getLot(),trx.getFee(),trx.getType());
-            }
-            else{
-                total_sell += countTransaction(trx.getPrice(),trx.getLot(),trx.getFee(),trx.getType());
-            }
-        }
     }
 }
