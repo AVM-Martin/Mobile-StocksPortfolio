@@ -46,7 +46,7 @@ public class TransactionListViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: TBD
+                // none
             }
         });
     }
