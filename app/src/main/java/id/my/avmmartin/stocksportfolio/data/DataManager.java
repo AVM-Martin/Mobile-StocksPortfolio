@@ -120,10 +120,28 @@ public class DataManager {
         // TODO: update the summary
     }
 
+    public int getTransactionTotalByType(int type) {
+        return databaseManager.getTransactionManager().getTotalByType(type);
+    }
+
     // transaction summary
+
+    public int transactionSummarySize() {
+        return databaseManager.getTransactionSummaryManager().size();
+    }
 
     public int transactionSummarySizeByPortfolio(int portfolioId) {
         return databaseManager.getTransactionSummaryManager().sizeByPortfolio(portfolioId);
+    }
+
+    public TransactionSummary getTransactionSummaryByPosition(int position) {
+        TransactionSummary transactionSummary = databaseManager
+            .getTransactionSummaryManager()
+            .getByPosition(position);
+
+        transactionSummary.setCurrentPrice(getStockPrice(transactionSummary.getFkStockId()));
+
+        return transactionSummary;
     }
 
     public TransactionSummary getTransactionSummaryByPortfolioByPosition(int portfolioId, int position) {

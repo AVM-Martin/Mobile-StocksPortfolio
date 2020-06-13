@@ -30,6 +30,14 @@ public class TransactionSummaryManager {
         return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, selectionArgs);
     }
 
+    public int size() {
+        String selection = (
+            LOT + " > 0"
+        );
+
+        return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME, selection, null);
+    }
+
     // create read update
 
     public void insertOrUpdate(TransactionSummary transactionSummary) {
@@ -77,6 +85,17 @@ public class TransactionSummaryManager {
         };
 
         try (Cursor cursor = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)) {
+            cursor.moveToPosition(position);
+            return new TransactionSummary(cursor);
+        }
+    }
+
+    public TransactionSummary getByPosition(int position) {
+        String selection = (
+            LOT + " > 0"
+        );
+
+        try (Cursor cursor = db.query(TABLE_NAME, null, selection, null, null, null, null)) {
             cursor.moveToPosition(position);
             return new TransactionSummary(cursor);
         }

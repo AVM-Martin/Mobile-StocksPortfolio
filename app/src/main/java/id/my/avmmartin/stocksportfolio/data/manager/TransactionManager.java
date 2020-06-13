@@ -20,8 +20,24 @@ public class TransactionManager {
     public static final String FEE = "fee";
     public static final String TOTAL = "total";
 
-    public static final int TYPE_BUY = 1;
-    public static final int TYPE_SELL = 2;
+    public int getTotalByType(int type) {
+        final String SUM_TOTAL = "sum_total";
+
+        String[] columns = {
+            "sum(" + TOTAL + ") as " + SUM_TOTAL
+        };
+        String having = TYPE + " = " + Integer.toString(type);
+
+        try (Cursor cursor = db.query(TABLE_NAME, columns, null, null, TYPE, having, null)) {
+            if (!cursor.moveToFirst()) {
+                throw new AssertionError();
+            }
+
+            return cursor.getInt(cursor.getColumnIndex(SUM_TOTAL));
+        } catch (AssertionError e) {
+            return 0;
+        }
+    }
 
     public int size() {
         return (int) DatabaseUtils.queryNumEntries(db, TABLE_NAME);
