@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
                 .getDataManager()
                 .getTransactionSummaryByPosition(i);
 
-            totalCurrentValue += summary.getLot() * summary.getCurrentPrice();
+            totalCurrentValue += summary.getLot() * summary.getAvgPrice();
             tvTotalProfitValue.setText(CommonUtils.separator_comma(totalCurrentValue));
         }
     }
