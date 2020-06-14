@@ -2,7 +2,7 @@
 
 Stocks Portfolio is an application that will store Indonesian stock transactions history in a local database. It also provides a simple security layer so intruder guests can not snoop on your transactions. Since it has been developed in a mobile version, Stock Portfolio will be a handy application.
 
-<img src="https://github.com/AVM-Martin/Mobile-StocksPortfolio/blob/master/.github/screenshot.jpg" height="500px">
+<img src="https://github.com/AVM-Martin/Mobile-StocksPortfolio/blob/master/.github/screenshot.png" height="500px">
 
 
 ## Contributors
