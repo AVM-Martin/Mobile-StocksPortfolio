@@ -45,7 +45,7 @@ Here a list of URLs that had been accessed and (maybe) give some insights to thi
 
   * [Good SQLite Tutorial](https://developer.android.com/training/data-storage/sqlite#PersistingDbConnection) per May 31, 2020
   * [Good Singleton Pattern on Volley](https://developer.android.com/training/volley/requestqueue#singleton) per June 02, 2020
-  * [Relative Layout Design] https://stackoverflow.com/questions/8319112/relativelayout-scrollview-and-navigation-bar-at-bottom
+  * [Relative Layout Design](https://stackoverflow.com/questions/8319112/relativelayout-scrollview-and-navigation-bar-at-bottom)
 
 
 ### Resources
